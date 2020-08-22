@@ -1,4 +1,7 @@
-// See: https://sass-lang.com/
+
+$primary: #E4572E;
+
+@import 'footer', 'sidenav', 'header', 'body', 'order-cart';
 
 body {
   background-color: #EEE;
