@@ -1,9 +1,13 @@
 // See: https://sass-lang.com/
-
 body {
-  background-color: #EEE;
-
-  h1 {
-    color: #244751;
-  }
+    background-color: #EEE;
+    h1 {
+        color: #244751;
+    }
 }
+
+@import 'footer',
+'sidenav',
+'header',
+'body',
+'order-cart';
