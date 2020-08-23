@@ -1,19 +1,23 @@
 .order-summary {
-    margin-right: 20px;
-    display: flex;
-    flex-direction: column;
+    margin-right: 10px;
+    // display: flex;
+    // flex-direction: column;
     // float: right;
     border: 1px solid white;
     background: white;
     border-radius: 5px;
-<<<<<<< HEAD
-    width: 30%;
-=======
     width: 20%;
-    max-height: 20vh;
+    min-height: 20vh;
     top: 30;
     right: 0;
->>>>>>> master
+}
+
+// .item1 {
+//     display: flex;
+//     justify-content: flex-start;
+// }
+ul li {
+    list-style-type: none;
 }
 
 .your-order-summary {
@@ -25,10 +29,10 @@
     background: rgb(18, 95, 202);
     color: white;
     width: inherit;
-    height: 50px;
+    // height: 50px;
     text-align: center;
     border-radius: 5px;
-    margin-left: 50px;
+    // margin-left: 50px;
 }
 
 .subtotal {
@@ -36,12 +40,16 @@
 }
 
 .tax {
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
 }
 
 .total {
     font-weight: 800;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
+}
+
+.total-div {
+    margin: 0;
 }
 
 .your-order-summary {
