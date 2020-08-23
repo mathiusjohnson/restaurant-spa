@@ -1,12 +1,15 @@
 .order-summary {
-    margin-right: 50px;
+    margin-right: 20px;
     display: flex;
     flex-direction: column;
-    float: right;
+    // float: right;
     border: 1px solid white;
     background: white;
     border-radius: 5px;
-    width: 300px;
+    width: 20%;
+    max-height: 20vh;
+    top: 30;
+    right: 0;
 }
 
 .your-order-summary {
