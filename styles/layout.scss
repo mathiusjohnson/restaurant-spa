@@ -1,13 +1,12 @@
-// See: https://sass-lang.com/
+$primary: #E4572E;
+@import 'header',
+'sidenav',
+'footer',
+'body',
+'order-cart';
 body {
     background-color: #EEE;
     h1 {
         color: #244751;
     }
 }
-
-@import 'footer',
-'sidenav',
-'header',
-'body',
-'order-cart';

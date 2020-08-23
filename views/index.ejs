@@ -1,17 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <title>Home Page</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
+    <script src="https://kit.fontawesome.com/fb7b9df17a.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+</head>
 
-  <body>
-    <h1>Hello World!</h1>
-  </body>
+
+<body>
+    <header class="bg-color flex">
+        <h1>The Best Food App</h1>
+        <button>See Menu</button>
+    </header>
+
+    <div id="sidenav">
+
+        <div class="buttons">
+
+            <a class="button" href="#"> Deals </a>
+            <a class="button" href="#"> Salads</a>
+            <a class="button" href="#"> Mains </a>
+            <a class="button" href="#"> Sides </a>
+            <a class="button" href="#"> Kid's Specials</a>
+            <a class="button" href="#"> Desserts </a>
+            <a class="button" href="#"> Drinks </a>
+
+        </div>
+
+    </div>
+
+    <div class="order-summary">
+        <span class="orders"> Your Order </span>
+        <span class="orders"> Item 1</span>
+        <span class="orders"> Item 2 </span>
+        <span class="orders"> Item 2 </span>
+        <span class="subtotal"> Food & Beverage Subtotal </span>
+        <span class="checkout"> Checkout </span>
+        <!-- <li> Item 1 </li> -->
+    </div>
+
+    <main>
+        <article class="menu-items">
+            <header class="name-of-item">
+                <div class="face-and-name hover-blur">
+                    <span class="name">Dahl</span>
+                </div>
+            </header>
+            <main class="max-width">
+                <p class="tweeted-text break-long-words hover-blur">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </main>
+
+            <!-- <footer class="tweet-footer">
+        <ul class="icons">
+          <li class="icon-div"><a href=""><i class="fas fa-flag"></i></a></li>
+          <li class="icon-div"><a href=""><i class="fas fa-retweet"></i></a></li>
+          <li class="icon-div"><a href=""><i class="fas fa-heart"></i></a></li>
+        </ul>
+      </footer> -->
+        </article>
+    </main>
+    <footer class="bg-color">
+        <div class="footer">
+            <ul class="social">
+                <p class="name">Copyright &copy; 2020. All Rights Reserved.</p>
+                <li>
+                    <i class="social-link fa fa-envelope" href="mailto:devachievem@gmail.com"></i>
+                </li>
+                <li>
+                    <i class="social-link fas fa-phone" href="tel:12368388913"></i>
+                </li>
+                <li>
+                    <i class="social-link fab fa-linkedin-in" href="https://www.linkedin.com/in/mathius-johnson/" target="_blank"></i>
+                </li>
+                <li>
+                    <i class="social-link fab fa-instagram" href="https://www.instagram.com/yogimathius/" target="_blank"></i>
+                </li>
+                <li>
+                    <i class="social-link mid-screen fab fa-twitter" href="https://twitter.com/yogimathius" target="_blank"></i>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
 </html>
