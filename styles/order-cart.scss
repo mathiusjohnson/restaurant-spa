@@ -1,0 +1,43 @@
+.order-summary {
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    float: right;
+    border: 1px solid white;
+    background: white;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.your-order-summary {
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.place-order {
+    background: rgb(18, 95, 202);
+    color: white;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    border-radius: 5px;
+    margin-left: 50px;
+}
+
+.subtotal {
+    font-weight: 800;
+}
+
+.tax {
+    margin-bottom: 20px;
+}
+
+.total {
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.your-order-summary {
+    display: flex;
+    flex-direction: row;
+}

@@ -1,8 +1,12 @@
-
 $primary: #E4572E;
-
-@import 'header', 'sidenav', 'footer', 'body', 'order-cart';
-
+@import 'header',
+'sidenav',
+'footer',
+'body',
+'order-cart';
 body {
-  background-color: #EEE;
+    background-color: #EEE;
+    h1 {
+        color: #244751;
+    }
 }

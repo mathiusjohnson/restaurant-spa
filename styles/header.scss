@@ -1,39 +1,37 @@
-
 .bg-color {
-  width: 100%;
-  background-color: $primary;
+    width: 100%;
+    background-color: $primary;
 }
 
 nav header {
-  height: 15vh;
-  justify-content: space-between;
-  position: fixed;
-  z-index: 9999;
+    height: 15vh;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 9999;
 }
 
 .empty-space {
-  height: 15vh;
-  display: block;
+    height: 15vh;
+    display: block;
 }
 
-//hi there
 .flex {
-  display: flex;
+    display: flex;
 }
 
 nav header h1 {
-  font-size: 24px;
-  color: white;
-  width: 12em;
-  text-align: right;
-  justify-content: center;
-  align-items: center;
-  display: flex;
+    font-size: 24px;
+    color: white;
+    width: 12em;
+    text-align: right;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 nav header button {
-  background-color: #E4572E;
-  border: none;
-  color: white;
-  margin-right: 1em;
+    background-color: #E4572E;
+    border: none;
+    color: white;
+    margin-right: 1em;
 }
