@@ -3,32 +3,35 @@
     background-color: $primary;
 }
 
-header {
-    height: 100px;
+nav header {
+    height: 15vh;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 9999;
 }
 
-main {
-    height: 65vh;
-}
-
-footer {
-    height: 60px;
+.empty-space {
+    height: 15vh;
+    display: block;
 }
 
 .flex {
     display: flex;
 }
 
-header h1 {
-    margin-left: 8px;
+nav header h1 {
     font-size: 24px;
     color: white;
     width: 12em;
     text-align: right;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
-header button {
+nav header button {
     background-color: #E4572E;
     border: none;
     color: white;
+    margin-right: 1em;
 }
