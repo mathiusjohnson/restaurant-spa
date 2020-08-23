@@ -10,13 +10,15 @@
     border-radius: 5px;
     margin-left: 50px;
     border: 2px solid white;
+    margin: right auto;
 }
 
-// .see-menu:hover {
-//     background-color: gray;
-//     opacity: .9;
-//     transition-duration: 1s;
-// }
+.see-menu:hover {
+    background-color: gray;
+    opacity: .9;
+    transition-duration: 1s;
+}
+
 .hero-image {
     background-position: center center;
     background-size: cover;
