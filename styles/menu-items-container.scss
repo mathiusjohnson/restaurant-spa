@@ -1,0 +1,67 @@
+#container {
+  display: flex;
+  margin-top: 50px;
+}
+
+.empty-space-two {
+  width: 15%;
+  display: block;
+}
+
+article section {
+    margin: 0 auto;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+}
+
+header .name {
+  font-size: 2.5em;
+}
+
+main p {
+  font-size: 1.5em;
+}
+
+.empty-space-three {
+  width: 20%;
+  display: block;
+}
+
+footer ul li {
+  list-style-type: none;
+}
+
+.icons {
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu-item-footer {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 2em;
+}
+
+.fa-minus, .fa-plus{
+  font-size: 1.5em;
+  padding-top: .5em;
+  color: $primary;
+}
+
+.menu-item-footer input {
+  font-size: 2em;
+  width: 1.5em;
+}
+
+.menu-item-footer button {
+  background-color: $primary;
+  font-size: 2em;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
