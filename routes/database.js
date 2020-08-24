@@ -1,5 +1,18 @@
 const db = require('./db/index.js');
 
+const getMenuItems = (id) => {
+
+    const queryString = (`SELECT menu_items.*,
+      categories.name
+  FROM menu_items
+  JOIN categories ON category_id = categories.id
+  WHERE category_id = $1`, [id]);
+
+    return db.query(queryString, queryParams)
+        .then(res => res.rows);
+
+};
+exports.getMenuItems = getMenuItems;
 
 const addToCart = (order) => {
     const queryString = (`INSERT INTO order_items
@@ -56,17 +69,3 @@ const pstCalc = (id) => {
         .then(res => res.rows);
 };
 exports.gstCalc = pstCalc;
-
-const menuItems = (id) => {
-
-    const queryString = (`SELECT menu_items.*,
-        categories.name
-    FROM menu_items
-    JOIN categories ON category_id = categories.id
-    WHERE category_id = $1`, [id]);
-
-    return db.query(queryString, queryParams)
-        .then(res => res.rows);
-
-};
-exports.menuItems = menuItems;
