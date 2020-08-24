@@ -216,11 +216,13 @@
         <p>1 Daal $4.99</p>
       </div>
       <div class="total-div">
-        <p class="subtotal"> Food & Beverage Subtotal </p>
-        <p class="tax"> GST </p>
-        <p class="total"> Total </p>
-        <p class="total-amt"> Total </p>
-        <p class="place-order"> PLACE ORDER </p>
+        <form method="POST" action="/sms">
+          <p class="subtotal"> Food & Beverage Subtotal </p>
+          <p class="tax"> GST </p>
+          <p class="total"> Total </p>
+          <p class="total-amt"> Total </p>
+          <button class="place-order"> PLACE ORDER </button>
+        </form>
       </div>
     </div>
   </div>
