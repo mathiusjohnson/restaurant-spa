@@ -47,9 +47,9 @@ const loadMenu = function() {
 
 
 $(document).ready(function(){
-  loadMenu();
+  // loadMenu();
 
-  //On click of category, filtering based on recieved list
+  //On click of nav button, pulls up menu skeleton
   $(".nav-button").click(function(event) {
     event.preventDefault();
     loadMenu();
