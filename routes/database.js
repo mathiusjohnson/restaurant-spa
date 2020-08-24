@@ -46,7 +46,6 @@ const gstCalc = (id) => {
 };
 exports.gstCalc = gstCalc;
 
-
 const pstCalc = (id) => {
   const queryString = (`SELECT ROUND(((SUM(price)*.07)/100), 2)
   FROM menu_items

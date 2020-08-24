@@ -1,3 +1,9 @@
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
 .order-summary {
     margin-right: 10px;
     // display: flex;
@@ -6,7 +12,6 @@
     border: 1px solid white;
     background: white;
     border-radius: 5px;
-    width: 20%;
     min-height: 20vh;
     top: 30;
     right: 0;
