@@ -36,7 +36,7 @@ GROUP BY menu_items.name;
 
 
 -- For the side nav buttons
-find items by category
+-- find items by category
 SELECT menu_items.*, categories.name
 FROM menu_items
   JOIN categories ON category_id = categories.id

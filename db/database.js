@@ -21,6 +21,10 @@ VALUES
   ($1, $2, $3, $4);`, [order.menu_item_id, order.order_id, order.customer_id, order.quantity]);
 
     return db.query(queryString)
+        .then(res => {
+            console.log(res);
+            return res;
+        })
         .then(res => res.rows);
 };
 exports.addToCart = addToCart;
