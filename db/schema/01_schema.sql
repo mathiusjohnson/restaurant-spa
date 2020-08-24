@@ -29,6 +29,7 @@ CREATE TABLE order_items
   id SERIAL PRIMARY KEY NOT NULL,
   menu_item_id INTEGER REFERENCES menu_items(id),
   order_id INTEGER REFERENCES orders(id),
+  customer_id INTEGER REFERENCES customers(id),
   quantity INTEGER
 );
 
