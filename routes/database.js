@@ -42,7 +42,7 @@ const placeOrder = (id) => {
   INSERT INTO orders
     (id, customer_id, order_date)
   VALUES
-    ($1, $2, $3);`, [id]);
+    ($1, $2, $3) returning * ;`, [id]);
     return db.query(queryString)
         .then(res => res.rows);
 };

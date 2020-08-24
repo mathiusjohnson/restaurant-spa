@@ -1,9 +1,19 @@
+//Helper function to calcuate taxes and total price
+const calcTotalSales = function(order) {
+
+}
+
+
 module.exports = function(router, database) {
 
     // GET - getMenuItems
 
     router.get('/menuItems', (req, res) => {
         database.getMenuItems(req.query)
+            .then(res => {
+                console.log(res);
+                return res;
+            })
             .then(menu_items => res.send({ menu_items }))
             .catch(e => {
                 console.error(e);
@@ -39,6 +49,7 @@ module.exports = function(router, database) {
     router.post('/placeOrder', (req, res) => {
         database.placeOrder({...req.body, customer_id })
             .then(orders => {
+                orders = calcTotalSales(orders)
                 res.send(orders);
             })
             .catch(e => {
@@ -48,30 +59,30 @@ module.exports = function(router, database) {
     });
 
     //POST - gstCalc
-    router.post('/gstCalc', (req, res) => {
-        // const userId = req.session.userId;
-        database.gstCalc({...req.body, menu_item_id: menu_items.id })
-            .then(price => {
-                res.send(price);
-            })
-            .catch(e => {
-                console.error(e);
-                res.send(e)
-            });
-    });
+    // router.post('/gstCalc', (req, res) => {
+    //     // const userId = req.session.userId;
+    //     database.gstCalc({...req.body, menu_item_id: menu_items.id })
+    //         .then(price => {
+    //             res.send(price);
+    //         })
+    //         .catch(e => {
+    //             console.error(e);
+    //             res.send(e)
+    //         });
+    // });
 
     //POST - pstCalc
-    router.post('/pstCalc', (req, res) => {
-        // const userId = req.session.userId;
-        database.pstCalc({...req.body, menu_item_id: menu_items.id })
-            .then(price => {
-                res.send(price);
-            })
-            .catch(e => {
-                console.error(e);
-                res.send(e)
-            });
-    });
+    // router.post('/pstCalc', (req, res) => {
+    //     // const userId = req.session.userId;
+    //     database.pstCalc({...req.body, menu_item_id: menu_items.id })
+    //         .then(price => {
+    //             res.send(price);
+    //         })
+    //         .catch(e => {
+    //             console.error(e);
+    //             res.send(e)
+    //         });
+    // });
 
     return router;
 }
