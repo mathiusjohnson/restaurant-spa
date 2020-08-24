@@ -1,28 +1,28 @@
 INSERT INTO categories
   (name)
 VALUES
-  ("deals");
+  ('deals');
 INSERT INTO categories
   (name)
 VALUES
-  ("mains");
+  ('mains');
 INSERT INTO categories
   (name)
 VALUES
-  ("salads");
+  ('salads');
 INSERT INTO categories
   (name)
 VALUES
-  ("sides");
+  ('sides');
 INSERT INTO categories
   (name)
 VALUES
-  ("desserts");
+  ('desserts');
 INSERT INTO categories
   (name)
 VALUES
-  ("kids_menu");
+  ('kids_menu');
 INSERT INTO categories
   (name)
 VALUES
-  ("drinks");
+  ('drinks');

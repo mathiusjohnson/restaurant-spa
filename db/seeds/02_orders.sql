@@ -1,9 +1,10 @@
 INSERT INTO orders
-  (customer_id, order_date)
+  (id, customer_id, order_date)
 VALUES
-  (1, 2020/09/22);
+  (1, 1, '2008-11-11 13:23:44');
 INSERT INTO orders
-  (customer_id, order_date)
+  (id, customer_id, order_date)
 VALUES
-  (2, 2020/09/22);
+  (2, 2, '2008-11-11
+13:23:44');
 

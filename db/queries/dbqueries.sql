@@ -1,5 +1,5 @@
 -- for menu items by category
-SELECT menu_items.*
+SELECT menu_items.*, categories.name
 FROM menu_items
   JOIN categories ON category_id = categories.id
 WHERE category_id = 1;
@@ -19,14 +19,14 @@ FROM customers
 WHERE customers.id = 1;
 
 -- total price
-SELECT COUNT(price)
+SELECT SUM(price)
 FROM menu_items
   JOIN order_items ON menu_item_id = menu_items.id
 WHERE order_id = 1
 GROUP BY order_id;
 
 -- subtotal
-SELECT COUNT(price)
+SELECT SUM(price)
 FROM menu_items
   JOIN order_items ON menu_item_id = menu_items.id
 WHERE order_id = 1
@@ -34,8 +34,25 @@ GROUP BY menu_items.name;
 
 
 -- functions
-
 place ORDER
-add items to cart
+INSERT INTO
+
+
+-- for add to order button
+add items
+(name, price and quantity) to cart
+
+
+
+
+-- For the side nav buttons
 find items by category
+SELECT menu_items.*, categories.name
+FROM menu_items
+  JOIN categories ON category_id = categories.id
+WHERE category_id = 1;
+
+
+
+
 show menu
