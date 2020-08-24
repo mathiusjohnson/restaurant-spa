@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- M-->
+
 <head>
   <title>Home Page</title>
 
@@ -8,9 +10,12 @@
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
+
   <script src="https://kit.fontawesome.com/fb7b9df17a.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <!-- Menu JS -->
+  <script type="text/javascript" src="/scripts/menu.js"></script>
 </head>
 
 
@@ -18,7 +23,7 @@
   <nav>
     <header class="bg-color flex">
       <h1>Punjab Tadka</h1>
-      <button>See Menu</button>
+      <button class="nav-button">See Menu</button>
     </header>
     <div class="empty-space"></div>
   </nav>
@@ -33,17 +38,40 @@
 
   <div id="container">
     <div id="sidenav" class="sticky">
-      <a class="button" href="#"> Salads</a>
-      <a class="button" href="#"> Mains </a>
-      <a class="button" href="#"> Sides </a>
-      <a class="button" href="#"> Kid's Menu</a>
-      <a class="button" href="#"> Desserts </a>
-      <a class="button" href="#"> Drinks </a>
+      <a class="button" data-id="0" href="#"> Salads</a>
+      <a class="button" data-id="1" href="#"> Mains </a>
+      <a class="button" data-id="2" href="#"> Sides </a>
+      <a class="button" data-id="3" href="#"> Kid's Menu</a>
+      <a class="button" data-id="4" href="#"> Desserts </a>
+      <a class="button" data-id="5" href="#"> Drinks </a>
     </div>
     <div class="empty-space-two"></div>
     <main>
-      <article id="menu-items-container">
-        <section class="menu-items">
+
+      <!-- Section which will hold the menu-->
+      <section class="menu-items-container">
+        <!-- article which will hold the main dishes
+        <article class="menu-items">
+          <header class="name-of-item">
+            <span class="name">Dahl</span>
+          </header>
+          <main class="max-width">
+            <p class="tweeted-text break-long-words hover-blur">Lorem Ipsum is simply dummy text of the printing and
+              typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </main>
+            <footer class="menu-item-footer">
+              <span class="price">$800</span>
+            <ul class="icons">
+              <li><a href=""><i class="fas fa-minus"></i></a></li>
+              <li><input type="number" required minlength=".5" maxlength="1" placeholder="00"></li>
+              <li><a href=""><i class="fas fa-plus"></i></i></a></li>
+              <li><button>Add to order</button>
+              </li>
+            </ul>
+          </footer>
+        </article>
+
+        <article class="menu-items">
           <header class="name-of-item">
             <span class="name">Dahl</span>
           </header>
@@ -60,8 +88,8 @@
               </li>
             </ul>
           </footer>
-        </section>
-        <section class="menu-items">
+        </article>
+        <article class="menu-items">
           <header class="name-of-item">
             <span class="name">Dahl</span>
           </header>
@@ -78,8 +106,8 @@
               </li>
             </ul>
           </footer>
-        </section>
-        <section class="menu-items">
+        </article>
+        <article class="menu-items">
           <header class="name-of-item">
             <span class="name">Dahl</span>
           </header>
@@ -96,8 +124,8 @@
               </li>
             </ul>
           </footer>
-        </section>
-        <section class="menu-items">
+        </article>
+        <article class="menu-items">
           <header class="name-of-item">
             <span class="name">Dahl</span>
           </header>
@@ -114,8 +142,8 @@
               </li>
             </ul>
           </footer>
-        </section>
-        <section class="menu-items">
+        </article>
+        <article class="menu-items">
           <header class="name-of-item">
             <span class="name">Dahl</span>
           </header>
@@ -132,8 +160,8 @@
               </li>
             </ul>
           </footer>
-        </section>
-        <section class="menu-items">
+        </article>
+        <article class="menu-items">
           <header class="name-of-item">
             <span class="name">Dahl</span>
           </header>
@@ -150,8 +178,8 @@
               </li>
             </ul>
           </footer>
-        </section>
-        <section class="menu-items">
+        </article>
+        <article class="menu-items">
           <header class="name-of-item">
             <span class="name">Dahl</span>
           </header>
@@ -168,8 +196,8 @@
               </li>
             </ul>
           </footer>
-        </section>
-        <section class="menu-items">
+        </article>
+        <article class="menu-items">
           <header class="name-of-item">
             <span class="name">Dahl</span>
           </header>
@@ -186,26 +214,8 @@
               </li>
             </ul>
           </footer>
-        </section>
-        <section class="menu-items">
-          <header class="name-of-item">
-            <span class="name">Dahl</span>
-          </header>
-          <main class="max-width">
-            <p class="tweeted-text break-long-words hover-blur">Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-          </main>
-          <footer class="menu-item-footer">
-            <ul class="icons">
-              <li><a href=""><i class="fas fa-minus"></i></a></li>
-              <li><input type="number" required minlength=".5" maxlength="1" placeholder="00"></li>
-              <li><a href=""><i class="fas fa-plus"></i></i></a></li>
-              <li><button>Add to order</button>
-              </li>
-            </ul>
-          </footer>
-        </section>
-      </article>
+        </article> -->
+      </section>
     </main>
 
     <div class="flex-column">
@@ -223,6 +233,7 @@
         <p class="place-order"> PLACE ORDER </p>
       </div>
     </div>
+
   </div>
   <footer class="bg-color footer">
     <!-- <div class="footer"> -->
