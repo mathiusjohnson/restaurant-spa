@@ -11,10 +11,8 @@ const createMenuItems = function(menuItems) {
     <footer class="menu-item-footer">
       <span class="price">${menuItems.price}</span>
       <ul class="icons">
-        <li><a href=""><i class="fas fa-minus"></i></a></li>
         <li><input type="number" required minlength=".5" maxlength="1" placeholder="00"></li>
-        <li><a href=""><i class="fas fa-plus"></i></i></a></li>
-        <li><button>Add to order</button>
+        <li><button>Add</button>
         </li>
       </ul>
     </footer>
@@ -30,16 +28,6 @@ const renderMenu = function(items) {
     $('#menu-items-container').append(menuHTML);
   }
 };
-
-
-
-// const loadtweets = function() {
-//   //Getting data using Jquery
-//   $.getJSON('http://localhost:8080/tweets')
-//     .then((tweets) => {
-//       renderTweets(tweets);
-//     })
-//   }
 
 const loadMenu = function() {
   $
