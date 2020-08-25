@@ -1,7 +1,12 @@
 //CREATING THE MENU
 const createMenuItems = function(menuItems) {
+<<<<<<< HEAD
   return `
 <form action='/menuItems' method="POST">
+=======
+    return `
+<form method='/menuItems' action="POST">
+>>>>>>> 6cbfb44dec238ea4038a8fb83974446795016a5f
   <article class="menu-items">
     <header class="name-of-item">
       <span class="name">${menuItems.name}</span>
@@ -25,18 +30,26 @@ const createMenuItems = function(menuItems) {
 };
 
 const renderMenu = function(items) {
+<<<<<<< HEAD
   for (const item of items) {
     const menuHTML = createMenuItems(item);
     $('#menu-items-container').append(menuHTML);
   }
+=======
+    for (const item of items) {
+        console.log("this is the item", item);
+        const menuHTML = createMenuItems(item);
+        $('#menu-items-container').append(menuHTML);
+    }
+>>>>>>> 6cbfb44dec238ea4038a8fb83974446795016a5f
 };
 
 const loadMenu = function() {
-  $
-    .get('/api/apiRoutes/menuItems')
-    .then((resp) => {
-      renderMenu(resp.entries);
-    });
+    $
+        .get('/api/apiRoutes/menuItems')
+        .then((resp) => {
+            renderMenu(resp.entries);
+        });
 };
 
 //ADDING TO THE CART
@@ -84,8 +97,9 @@ const loadCart = function() {
 
 
 $(document).ready(function() {
-  // loadMenu();
+    // loadMenu();
 
+<<<<<<< HEAD
   //On click of nav button, pulls up menu skeleton
   $("#nav-button").on('click', function(event) {
     event.preventDefault();
@@ -99,3 +113,12 @@ $(document).ready(function() {
   });
 
 });
+=======
+    //On click of nav button, pulls up menu skeleton
+    $("#nav-button").on('click', function(event) {
+        event.preventDefault();
+        console.log("this has been clicked!");
+        loadMenu();
+    });
+});
+>>>>>>> 6cbfb44dec238ea4038a8fb83974446795016a5f
