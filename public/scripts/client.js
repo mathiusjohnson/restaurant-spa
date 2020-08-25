@@ -1,3 +1,6 @@
+// ---------- Create menu items
+
+
 const createMenuItems = function(menuItems) {
   return `
 <form method='/menu' action="POST">
@@ -33,12 +36,15 @@ const loadMenu = function() {
       renderMenu(resp.entries);
     });
 };
-//ADDING TO THE CART
+
+
+
+
+// -----------  ADDING TO THE CART
 const createAddToCart = function(menuItems) {
   return `
   <form action='/addToCart' method="POST">
   <div class="flex-column">
-  <span class="your-order-summary"> Your Order </span>
   <div class="item1">
     <p>${menuItems.quantity} ${menuItems.name} ${menuItems.price}</p>
     <p>${menuItems.quantity} ${menuItems.name} ${menuItems.price}</p>
@@ -69,16 +75,42 @@ const loadCart = function() {
       renderCart(resp.entries);
     });
 };
+
+
+// --------- adding a user to header
+
+const createUser = function(user) {
+  return `
+    <form action='/users' method='POST'>
+    <h3>${user.name}'s Order</h3>
+    </form>
+  `;
+};
+
+const renderUser = function(user) {
+  const userHTML = createUser(user);
+  $('#users-cart').append(userHTML);
+};
+
+const addUser = function() {
+  $
+    .post('/api/users')
+    .then((resp) => {
+      console.log("response: ", resp);
+      renderUser(resp.users[0]);
+    });
+};
+
 $(document).ready(function() {
-  // loadMenu();
-  //On click of nav button, pulls up menu skeleton
+  //On click of nav button, opens menu
   $("#nav-button").on('click', function(event) {
     event.preventDefault();
     loadMenu();
   });
-  //On click listener for add to cart,
+  //On click listener for add to cart
   $("#menu-items-container").on('click', ".order-button", function(event) {
     event.preventDefault();
+    addUser();
     loadCart();
   });
 });
