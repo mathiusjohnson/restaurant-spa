@@ -2,6 +2,8 @@
 // const calcTotalSales = function(order) {
 
 // }
+const express = require('express');
+const router = express.Router();
 
 module.exports = (db) => {
     router.get('/menuItems', (req, res) => {
