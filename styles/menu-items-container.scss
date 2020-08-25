@@ -3,8 +3,12 @@
   margin-top: 50px;
 }
 
+#menu-items-container {
+  width: 60vw;
+}
+
 .empty-space-two {
-  width: 15%;
+  width: 70%;
   display: block;
 }
 
@@ -55,7 +59,8 @@ footer ul li {
 
 .menu-item-footer input {
   font-size: 2em;
-  width: 1.5em;
+  width: 2em;
+  height: 1.2em;
 }
 
 .menu-item-footer button {
