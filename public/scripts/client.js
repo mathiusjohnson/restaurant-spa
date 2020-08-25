@@ -1,6 +1,6 @@
 const createMenuItems = function(menuItems) {
   return `
-<form method='/menuItems' action="POST">
+<form method='/menu' action="POST">
   <article class="menu-items">
     <header class="name-of-item">
       <span class="name">${menuItems.name}</span>
@@ -11,10 +11,8 @@ const createMenuItems = function(menuItems) {
     <footer class="menu-item-footer">
       <span class="price">${menuItems.price}</span>
       <ul class="icons">
-        <li><a href=""><i class="fas fa-minus"></i></a></li>
-        <li><input type="number" required minlength=".5" maxlength="1" placeholder="00"></li>
-        <li><a href=""><i class="fas fa-plus"></i></i></a></li>
-        <li><button class="order-button">Add to order</button>
+        <li><input type="number" required minlength="1" maxlength="1" placeholder="0"></li>
+        <li><button class="order-button">Add</button>
         </li>
       </ul>
     </footer>
@@ -30,7 +28,7 @@ const renderMenu = function(items) {
 };
 const loadMenu = function() {
   $
-    .get('/api/apiRoutes/menuItems')
+    .get('/api/menu/')
     .then((resp) => {
       renderMenu(resp.entries);
     });
