@@ -23,16 +23,3 @@ module.exports = (db) => {
     });
     return router;
 };
-
-// POST REQUEST - addToCart
-// router.post('/cart', (req, res) => {
-//   const customer_id = req.session.customer_id;
-//   database.addToCart({...req.body, customer_id })
-//     .then(order_items => {
-//       res.send(order_items);
-//     })
-//     .catch(e => {
-//       console.error(e);
-//       res.send(e);
-//     });
-// });
