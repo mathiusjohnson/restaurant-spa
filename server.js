@@ -38,12 +38,16 @@ const usersRoutes = require("./routes/users");
 const menu = require("./routes/menu");
 const addToCart = require("./routes/addToCart");
 const showCart = require("./routes/showCart")
-    // Mount all resource routes
-    // Note: Feel free to replace the example routes below with your own
+const showCartPost = require("./routes/showCartPost")
+
+// Mount all resource routes
+// Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/menu", menu(db));
 app.use("/api/addToCart", addToCart(db));
 app.use("/api/showCart", showCart(db));
+app.use("/api/showCartPost", showCartPost(db));
+
 // Note: mount other resources here, using the same pattern above
 
 

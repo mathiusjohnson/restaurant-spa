@@ -38,13 +38,12 @@ const loadMenu = function() {
 const createAddToCart = function(menuItems) {
     console.log('menuItems', menuItems);
     return `
-  <form action='/showCart' method="GET">
+  <form action='/showCartPost' method="POST">
   <div class="flex-column">
   <div class="item1">
     <p>${menuItems.quantity} ${menuItems.name} ${menuItems.price}</p>
 
   </div>
-
 </div>
 </form>
 `;
@@ -60,7 +59,16 @@ const createPlaceOrder = function() {
   </div>`);
 }
 
+const showCart = function(cartItems) {
+    $
+        .get('/api/showCart')
+        .then((resp) => {
+            console.log(resp);
+        })
+}
+
 const renderCart = function(items) {
+    showCart();
     console.log('items', items);
     for (const item of items) {
         console.log('item', item);
@@ -72,12 +80,20 @@ const renderCart = function(items) {
     }
 };
 
-const loadCart = function() {
+const addCart = function() {
     $
         .post('/api/addToCart')
         .then((resp) => {
-            console.log(resp);
             renderCart(resp.entries);
+        });
+};
+
+const loadCart = function() {
+    $
+        .post('/api/showCartPost')
+        .then((resp) => {
+            console.log("load cart resp: ", resp);
+            renderCart(resp.orderCart);
         });
 };
 
@@ -91,6 +107,7 @@ $(document).ready(function() {
     //On click listener for add to cart,
     $("#menu-items-container").on('click', ".order-button", function(event) {
         event.preventDefault();
+        addCart();
         loadCart();
     });
 });
