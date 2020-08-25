@@ -1,8 +1,6 @@
-const { getMenuItems } = require("../../routes/database");
-
 $(document).ready(function() {
             // renderTweets(data)
-            getMenuItems();
+            // getMenuItems();
 
             //display menu items
 
