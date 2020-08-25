@@ -1,9 +1,17 @@
+.empty-space-three {
+  width: 20%;
+  display: block;
+}
+
 .flex-column {
   display: flex;
   flex-direction: column;
-  width: 25%;
 }
 
+.order-cart {
+  margin-right: 40px;
+
+}
 .order-summary {
     margin-right: 10px;
     // display: flex;
