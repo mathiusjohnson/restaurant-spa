@@ -25,20 +25,21 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); //used to get data from an object
 app.use("/styles", sass({
-    src: __dirname + "/styles",
-    dest: __dirname + "/public/styles",
-    debug: true,
-    outputStyle: 'expanded'
+  src: __dirname + "/styles",
+  dest: __dirname + "/public/styles",
+  debug: true,
+  outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
-
+const apiRoutes = require("./routes/apiRoutes");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
+app.use("/api/apiRoutes", apiRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
@@ -46,9 +47,9 @@ app.use("/api/users", usersRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-    res.render("index");
+  res.render("index");
 });
 
 app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}`);
+  console.log(`Example app listening on port ${PORT}`);
 });
