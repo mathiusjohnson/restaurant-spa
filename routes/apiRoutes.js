@@ -1,8 +1,7 @@
 //Helper function to calcuate taxes and total price
-const calcTotalSales = function(order) {
+// const calcTotalSales = function(order) {
 
-}
-
+// }
 
 module.exports = function(router, database) {
 
