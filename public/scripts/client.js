@@ -14,7 +14,7 @@ const createMenuItems = function(menuItems) {
     <footer class="menu-item-footer">
       <span class="price">${menuItems.price}</span>
       <ul class="icons">
-        <li><input type="number" required minlength="1" maxlength="1" placeholder="0"></li>
+        <li><input id="numOfItems${menuItems.id}" type="number" required minlength="1" maxlength="1" placeholder="0"></li>
         <li><button data-id=${menuItems.id} class="order-button">Add</button>
         </li>
       </ul>
@@ -41,7 +41,7 @@ const loadMenu = function() {
 
 // -----------  ADDING TO THE CART
 const createAddToCart = function(menuItems) {
-    console.log('menuItems', menuItems);
+    // console.log('menuItems', menuItems);
     return `
   <form action='/showCartPost' method="POST">
   <div class="flex-column">
@@ -62,12 +62,12 @@ const createPlaceOrder = function() {
     <p class="total-amt"> Total </p>
     <p class="place-order"> PLACE ORDER </p>
   </div>`);
-}
+};
 
 
 const renderCart = function(items) {
     // console.log('items', items);
-    loadCart()
+    loadCart();
     for (const item of items) {
         // console.log('item', item);
         const cartHTML = createAddToCart(item);
@@ -84,13 +84,14 @@ const showCart = function(cartItems) {
         .then((resp) => {
             console.log("response: ", resp);
             renderCart(resp.orderCart);
-        })
-}
+        });
+};
 
 const addCart = function(menuItem) {
     $
         .post('/api/addToCart', menuItem)
         .then((resp) => {
+            console.log("this is menu item: ", menuItem);
             renderCart(resp.orderCart);
         });
 };
@@ -120,7 +121,7 @@ const addUser = function() {
     $
         .post('/api/users')
         .then((resp) => {
-            console.log("response: ", resp);
+            // console.log("response: ", resp);
             renderUser(resp.users[0]);
         });
 
@@ -135,7 +136,11 @@ $(document).ready(function() {
     //On click listener for add to cart,
     $("#menu-items-container").on('click', ".order-button", function(event) {
         event.preventDefault();
-
+        addUser();
+        const textFieldID = `#numOfItems${event.target.dataset.id}`;
+        console.log("text field id: ", textFieldID);
+        const itemsToCart = $(textFieldID).val();
+        console.log("items to cart: ", itemsToCart);
         //HARDCODED Quantit Data for menuItem instead of fetching from the page
         //event.target.dataset.id is getting the specific id of the add buttons of each menu option
         //yellow moong daal is id 1, channa paneer is id 2
@@ -143,8 +148,9 @@ $(document).ready(function() {
         //quantity can be tackled in the same way, we need to read the .val of the textbox beside the addbutton
         //Whats the ID for the menu item, and read the textbox and get quantity number
 
-        debugger
-        const menuItem = { menuItemId: event.target.dataset.id, quantity: 2 };
+        // debugger;
+        const menuItem = { menuItemId: event.target.dataset.id, quantity: itemsToCart };
+        console.log("value: ", event.target);
         addCart(menuItem);
         $('.order-cart').empty();
         showCart();
