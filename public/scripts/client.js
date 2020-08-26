@@ -64,16 +64,25 @@ const createAddToCart = function(menuItems) {
 const createPlaceOrder = function() {
   return (`<div class="total-div">
     <p class="subtotal"> Food & Beverage Subtotal </p>
-    <p class="tax"> GST </p>
+    <p class="tax"> GST: $ </p>
     <p class="total"> Total </p>
     <p class="total-amt"> Total </p>
     <p class="place-order"> PLACE ORDER </p>
   </div>`);
 };
 
+const gstCalculator = function (total) {
+  const gst = total * 0.05;
+  return gst;
+}
+const totalGstCalculator = function(gst) {
+  const totalGst = gst + total;
+  return totalGst;
+}
+
 const renderCart = function(items) {
   // console.log('items', items);
-  loadCart();
+  // loadCart();
   for (const item of items) {
     // console.log('item', item);
     const cartHTML = createAddToCart(item);
@@ -102,11 +111,11 @@ const addCart = function(menuItem) {
     });
 };
 
-const loadCart = function() {
-  $
-    .post('/api/showCartPost')
-    .then((resp) => resp.orderCart);
-};
+// const loadCart = function() {
+//   $
+//     .post('/api/showCartPost')
+//     .then((resp) => resp.orderCart);
+// };
 
 // --------- adding a user to header
 
