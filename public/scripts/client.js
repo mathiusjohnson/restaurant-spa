@@ -142,6 +142,7 @@ const renderUser = function(user) {
 //         });
 
 // };
+
 $(document).ready(function() {
     // loadMenu();
     //On click of nav button, pulls up menu skeleton
