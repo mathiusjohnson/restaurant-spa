@@ -7,7 +7,7 @@ module.exports = (db) => {
     const menuItemId = req.body.menuItemId;
     const orderId = 2;
     const customerId = 2;
-    const quantity = 0;
+    const quantity = req.body.quantity;
 
     // first we need to check if order_item with the same menu item is already there if true, increment quantity
     // else we want to add to cart
