@@ -1,12 +1,13 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 module.exports = (db) => {
   router.post('/', (req, res) => {
+    console.log('req.body', req.body.quantity);
     // const id = req.params.id
-    const menuItemId = 1;
-    const orderId = 1;
+    const menuItemId = req.body.menuItemId;
+    const orderId = 2;
     const customerId = 2;
-    const quantity = 4;
+    const quantity = req.body.quantity;
     db
       .query(
         `INSERT INTO order_items
@@ -16,6 +17,7 @@ module.exports = (db) => {
               RETURNING *;`, [menuItemId, orderId, customerId, quantity]
       )
       .then(data => {
+        console.log('data', data.rows);
         const entries = data.rows;
         res.json({ entries });
       });

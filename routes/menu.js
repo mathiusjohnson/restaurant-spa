@@ -2,6 +2,7 @@
 // const calcTotalSales = function(order) {
 
 // }
+
 const express = require('express');
 const router = express.Router();
 
@@ -17,6 +18,7 @@ module.exports = (db) => {
         WHERE category_id = $1`, [id]
       )
       .then(data => {
+        console.log("this is data: ", data);
         const entries = data.rows;
         res.json({ entries });
       });

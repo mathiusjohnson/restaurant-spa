@@ -1,8 +1,6 @@
-const { getMenuItems } = require("../../routes/database");
-
 $(document).ready(function() {
             // renderTweets(data)
-            getMenuItems();
+            // getMenuItems();
 
             //display menu items
 
@@ -17,6 +15,6 @@ $(document).ready(function() {
                 }).then(function() {
                     getMenuItems();
                     $('#tweet-text').val('');
-                    console.log();
+                    // console.log();
                 })
-            })
+            });

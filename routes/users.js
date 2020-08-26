@@ -6,12 +6,12 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
 module.exports = (db) => {
-  router.post("/", (req, res) => {
-    db.query(`SELECT * FROM users
-    WHERE id = 1;`)
+  router.get("/", (req, res) => {
+    db.query(`SELECT * FROM customers
+    WHERE customers.id = 2;`)
       .then(data => {
         const users = data.rows;
         res.json({ users });
