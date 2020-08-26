@@ -12,7 +12,7 @@ const createMenuItems = function(menuItems) {
       <p class="tweeted-text break-long-words hover-blur">${menuItems.description}</p>
     </main>
     <footer class="menu-item-footer">
-      <span class="price">${menuItems.price}</span>
+      <span class="price">$${convertCentsToDollars(menuItems.price)}</span>
       <ul class="icons">
         <li><input id="numOfItems${menuItems.id}" type="number" required minlength="1" maxlength="1" placeholder="0"></li>
         <li><button data-id=${menuItems.id} class="order-button">Add</button>
@@ -23,6 +23,12 @@ const createMenuItems = function(menuItems) {
 </form>
 `;
 };
+
+const convertCentsToDollars = function(cents) {
+  const dollars = cents / 100;
+  return dollars
+}
+
 const renderMenu = function(items) {
   for (const item of items) {
     const menuHTML = createMenuItems(item);
@@ -46,7 +52,9 @@ const createAddToCart = function(menuItems) {
   <form action='/showCartPost' method="POST">
   <div class="flex-column">
   <div class="item1">
-    <p>${menuItems.quantity} ${menuItems.name} ${menuItems.price}</p>
+    <p>Quantity:${menuItems.quantity}</p>
+    <p>${menuItems.name}</p>
+    <p>$${convertCentsToDollars(menuItems.price)}</p>
   </div>
 </div>
 </form>
@@ -62,7 +70,6 @@ const createPlaceOrder = function() {
     <p class="place-order"> PLACE ORDER </p>
   </div>`);
 };
-
 
 const renderCart = function(items) {
   // console.log('items', items);
