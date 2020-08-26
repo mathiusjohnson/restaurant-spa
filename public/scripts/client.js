@@ -25,8 +25,8 @@ const createMenuItems = function(menuItems) {
 };
 
 const convertCentsToDollars = function(cents) {
-  const dollars = cents / 100;
-  return dollars
+    const dollars = cents / 100;
+    return dollars
 }
 
 const renderMenu = function(items) {
@@ -73,7 +73,7 @@ const createPlaceOrder = function() {
 
 const renderCart = function(items) {
     // console.log('items', items);
-    loadCart();
+    // loadCart();
     for (const item of items) {
         // console.log('item', item);
         const cartHTML = createAddToCart(item);
@@ -97,16 +97,17 @@ const addCart = function(menuItem) {
     $
         .post('/api/addToCart', menuItem)
         .then((resp) => {
+            console.log('RESPONSE:', resp);
             console.log("this is menu item: ", menuItem);
             renderCart(resp.orderCart);
         });
 };
 
-const loadCart = function() {
-    $
-        .post('/api/showCartPost')
-        .then((resp) => resp.orderCart);
-};
+// const loadCart = function() {
+//     $
+//         .post('/api/showCartPost')
+//         .then((resp) => resp.orderCart);
+// };
 
 // --------- adding a user to header
 
@@ -123,15 +124,15 @@ const renderUser = function(user) {
     $('#users-cart').append(userHTML);
 };
 
-const addUser = function() {
-    $
-        .post('/api/users')
-        .then((resp) => {
-            // console.log("response: ", resp);
-            renderUser(resp.users[0]);
-        });
+// const addUser = function() {
+//     $
+//         .post('/api/users')
+//         .then((resp) => {
+//             // console.log("response: ", resp);
+//             renderUser(resp.users[0]);
+//         });
 
-};
+// };
 $(document).ready(function() {
     // loadMenu();
     //On click of nav button, pulls up menu skeleton
@@ -142,7 +143,7 @@ $(document).ready(function() {
     //On click listener for add to cart,
     $("#menu-items-container").on('click', ".order-button", function(event) {
         event.preventDefault();
-        addUser();
+        // addUser();
         const textFieldID = `#numOfItems${event.target.dataset.id}`;
         console.log("text field id: ", textFieldID);
         const itemsToCart = $(textFieldID).val();
@@ -156,6 +157,7 @@ $(document).ready(function() {
 
         // debugger;
         const menuItem = { menuItemId: event.target.dataset.id, quantity: itemsToCart };
+        // debugger
         console.log("value: ", event.target);
         addCart(menuItem);
         $('.order-cart').empty();
