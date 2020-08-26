@@ -6,7 +6,7 @@ module.exports = (db) => {
     const menuItemId = 1;
     const orderId = 1;
     const customerId = 2;
-    const quantity = 4;
+    const quantity = 10;
     db
       .query(
         `INSERT INTO order_items
@@ -22,3 +22,4 @@ module.exports = (db) => {
   });
   return router;
 };
+
