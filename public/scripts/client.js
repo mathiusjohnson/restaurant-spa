@@ -71,8 +71,10 @@ const createPlaceOrder = function() {
 };
 
 const renderCart = function(items) {
+  // console.log('items', items);
   // loadCart();
   for (const item of items) {
+    // console.log('item', item);
     const cartHTML = createAddToCart(item);
     $('.order-cart').prepend(cartHTML);
   }
@@ -81,10 +83,11 @@ const renderCart = function(items) {
   }
 };
 
-const showCart = function() {
+const showCart = function(cartItems) {
   $
     .get('/api/showCart')
     .then((resp) => {
+      console.log("response: ", resp);
       renderCart(resp.orderCart);
     });
 };
@@ -93,14 +96,16 @@ const addCart = function(menuItem) {
   $
     .post('/api/addToCart', menuItem)
     .then((resp) => {
+      console.log('RESPONSE:', resp);
+      console.log("this is menu item: ", menuItem);
       renderCart(resp.orderCart);
     });
 };
 
 // const loadCart = function() {
-//   $
-//     .post('/api/showCartPost')
-//     .then((resp) => resp.orderCart);
+//     $
+//         .post('/api/showCartPost')
+//         .then((resp) => resp.orderCart);
 // };
 
 // --------- adding a user to header
@@ -118,6 +123,16 @@ const renderUser = function(user) {
   $('#users-cart').append(userHTML);
 };
 
+// const addUser = function() {
+//     $
+//         .post('/api/users')
+//         .then((resp) => {
+//             // console.log("response: ", resp);
+//             renderUser(resp.users[0]);
+//         });
+
+// };
+
 const addUser = function() {
   $
     .post('/api/users')
@@ -127,12 +142,12 @@ const addUser = function() {
     });
 
 };
+
 const sendSMS = function() {
   $
     .post('/api/sms/send')
     .then((resp) => resp.sendSMS);
 };
-
 
 $(document).ready(function() {
   // loadMenu();

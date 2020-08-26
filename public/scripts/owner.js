@@ -1,5 +1,4 @@
 const createCustomer = function(customer) {
-  console.log("create customer: ", customer.phone_number);
   return `<form method='/createCustomer' action="POST">
   <article class="order-items">
       <p class="name">Name: ${customer.name} </p>
@@ -10,9 +9,7 @@ const createCustomer = function(customer) {
 };
 
 const renderCustomer = function(customers) {
-  console.log("render customer: ", customers);
   const customerHTML = createCustomer(customers);
-  console.log("customer html: ", customerHTML);
   $('#customer-container').append(customerHTML);
 };
 
@@ -45,7 +42,6 @@ const loadOrderItems = function() {
   $
     .get('/api/createOrders/')
     .then((resp) => {
-      console.log(resp.orders);
       renderOrderItems(resp.orders);
     });
 };

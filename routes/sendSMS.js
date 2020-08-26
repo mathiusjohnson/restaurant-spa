@@ -16,7 +16,7 @@ module.exports = (db) => {
     console.log("req body: ", req.body);
     const id = 2;
     db.query(
-      `SELECT menu_items.name, price, customers.name, customers.phone_number
+      `SELECT menu_items.name as menu_item, customers.name, customers.phone_number, order_items.quantity
       FROM menu_items
       JOIN order_items ON menu_item_id = menu_items.id
       JOIN customers ON customers.id = customer_id
@@ -24,10 +24,18 @@ module.exports = (db) => {
       .then(data => {
         console.log(data.rows);
         const order = data.rows[0];
+        const customer = order.name;
+        const phone = order.phone_number;
+        let itemAndQuantity = [];
+        for (const rows of data.rows) {
+          console.log("each object of data: ", rows);
+          itemAndQuantity.push(` ${rows.quantity} ${rows.menu_item}`);
+        }
+
         console.log(order);
         client.messages
           .create({
-            body: `A new order has been placed! Details: `,
+            body: `A new order has been placed! ${customer} ordered: ${itemAndQuantity}. Contact details: ${phone}.`,
             from: '+14132254219',
             to: '+12368388913'
           })
