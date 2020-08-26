@@ -8,7 +8,8 @@ WHERE category_id = 1;
 SELECT menu_items.name, price
 FROM menu_items
   JOIN order_items ON menu_item_id = menu_items.id
-WHERE order_id = 1;
+  JOIN customers ON customers.id = customer_id
+WHERE customer_id = 1;
 
 -- -- for customer specific orders
 -- SELECT customers.name, menu_items.name, price
@@ -44,10 +45,12 @@ WHERE category_id = 1;
 
 --menu items
 
-queryString = SELECT menu_items.*, categories.name
+queryString =
+SELECT menu_items.*, categories.name
 FROM menu_items
   JOIN categories ON category_id = categories.id
 WHERE category_id = 1;
 
 return db.query(queryString, queryParams)
-    .then(res => res.rows);
+    .then
+(res => res.rows);

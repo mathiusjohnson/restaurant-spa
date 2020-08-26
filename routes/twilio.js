@@ -1,18 +1,23 @@
+const client = require('twilio')
 
-const accountSid = process.env.TWILIO_ACCOUNTSID;
-const authToken = process.env.TWILIO_AUTHTOKEN;
-const fromPhone = process.env.TWILIO_NUMBER;
+module.exports = {
+  callOwner: function(){
+      client.calls.create({
+          to: "+16478867803",
+          from: "+16477243888",
+          //url: "http://demo.twilio.com/docs/voice.xml"
+        }, function(err, responseData) {
+          console.log(responseData.from);
+      });
+  }
 
-const client = require('twilio')(accountSid, authToken);
-
-const sendMessage = (messageData) => {
-  return client.messages.create({
-    body: `Hi ${messageData.body.userName},
-      Thanks for ordering with LightResto.
-      Your food is ready for pickup`,
-    from: fromPhone,
-    to: `${messageData.body.sendText}`
-  });
-};
-
-module.exports = { sendMessage };
+  sendSMS: function(){
+    client.messages.create({
+        to: "+16478867803",
+        from: "+16477243888",
+        body: "Your food is ready for pickup!",
+    }, function(err, message) {
+        console.log(message.sid);
+    });
+  }
+}

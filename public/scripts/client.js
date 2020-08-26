@@ -47,8 +47,6 @@ const createAddToCart = function(menuItems) {
   <div class="flex-column">
   <div class="item1">
     <p>${menuItems.quantity} ${menuItems.name} ${menuItems.price}</p>
-    <p>${menuItems.quantity} ${menuItems.name} ${menuItems.price}</p>
-    <p>${menuItems.quantity} ${menuItems.name} ${menuItems.price}</p>
   </div>
   <div class="total-div">
     <p class="subtotal"> Food & Beverage Subtotal </p>

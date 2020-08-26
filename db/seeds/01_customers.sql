@@ -1,8 +1,8 @@
 -- Users table seeds here (Example)
 INSERT INTO customers
-  (name)
+  (name, phone_number)
 VALUES
-  ('Alice');
+  ('Alice', 16043186664);
 INSERT INTO customers
   (name)
 VALUES
