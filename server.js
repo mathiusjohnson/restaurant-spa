@@ -25,10 +25,10 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); //used to get data from an object
 app.use("/styles", sass({
-  src: __dirname + "/styles",
-  dest: __dirname + "/public/styles",
-  debug: true,
-  outputStyle: 'expanded'
+    src: __dirname + "/styles",
+    dest: __dirname + "/public/styles",
+    debug: true,
+    outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
 
@@ -36,12 +36,16 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const menu = require("./routes/menu");
 const addToCart = require("./routes/addToCart");
-const addUser = require('./routes/users');
+const showCart = require("./routes/showCart");
+const showCartPost = require("./routes/showCartPost");
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/menu", menu(db));
 app.use("/api/addToCart", addToCart(db));
-app.use('/api/users', addUser(db));
+app.use("/api/showCart", showCart(db));
+app.use("/api/showCartPost", showCartPost(db));
+
 // Note: mount other resources here, using the same pattern above
 
 
@@ -49,9 +53,9 @@ app.use('/api/users', addUser(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("index");
+    res.render("index");
 });
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+    console.log(`Example app listening on port ${PORT}`);
 });
