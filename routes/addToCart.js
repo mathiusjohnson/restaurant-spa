@@ -8,11 +8,9 @@ module.exports = (db) => {
         const orderId = 2;
         const customerId = 2;
         // const quantity = 1;
-
         // first we need to check if order_item with the same menu item is already there if true, increment quantity
         // else we want to add to cart
-
-        db.query(`SELECT * FROM order_items where menu_item_id = $1 AND customer_id = $2;`, [menuItemId, customerId])
+         db.query(`SELECT * FROM order_items where menu_item_id = $1 AND customer_id = $2;`, [menuItemId, customerId])
             .then((result1) => {
                 console.log('result1:', result1.rows)
                 if (result1.rows.length > 0) {
