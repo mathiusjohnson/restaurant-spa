@@ -47,7 +47,6 @@ const loadMenu = function() {
 
 // -----------  ADDING TO THE CART
 const createAddToCart = function(menuItems) {
-  // console.log('menuItems', menuItems);
   return `
   <form action='/showCartPost' method="POST">
   <div class="flex-column">
@@ -86,7 +85,6 @@ const showCart = function() {
   $
     .get('/api/showCart')
     .then((resp) => {
-      console.log("response: ", resp);
       renderCart(resp.orderCart);
     });
 };
@@ -95,7 +93,6 @@ const addCart = function(menuItem) {
   $
     .post('/api/addToCart', menuItem)
     .then((resp) => {
-      console.log("this is menu item: ", menuItem);
       renderCart(resp.orderCart);
     });
 };

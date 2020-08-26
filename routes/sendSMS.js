@@ -13,8 +13,7 @@ router.use(bodyParser.json());
 // Create users endpoint
 module.exports = (db) => {
   router.post('/send', (req, res) => {
-
-    console.log("req: ", req);
+    console.log("req body: ", req.body);
     const id = 2;
     db.query(
       `SELECT menu_items.name, price, customers.name, customers.phone_number
@@ -23,32 +22,17 @@ module.exports = (db) => {
       JOIN customers ON customers.id = customer_id
       WHERE customer_id = $1;`, [id])
       .then(data => {
+        console.log(data.rows);
+        const order = data.rows[0];
+        console.log(order);
         client.messages
           .create({
-            body: "this is a message from twilio",
+            body: `A new order has been placed! Details: `,
             from: '+14132254219',
             to: '+12368388913'
           })
           .then(message => console.log(message.sid));
-        // console.log("this is data: " ,data);
-        // const order = data.rows;
-        // res.json({ order });
       });
   });
   return router;
 };
-//   const { name, phone } = req.body;
-//   const user = {
-//     name,
-//     phone
-//   };
-//   userDatabase.push(user);
-//   const welcomeMessage = 'hello, this is Caia testing';
-//   sendSms(user.phone, welcomeMessage);
-//   res.status(201).send({
-//     message: 'Account created successfully, kindly check your phone to activate your account!',
-//     data: user
-//   });
-// });
-// router.listen(port, () => {
-//   console.log(`Server running on port ${port}`);

@@ -13,7 +13,6 @@ module.exports = (db) => {
         WHERE customers.id = $1;`, [customerId]
       )
       .then(data => {
-        // console.log('data', data.rows);
         const customer = data.rows;
         res.json({ customer });
       })

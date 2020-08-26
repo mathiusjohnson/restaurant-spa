@@ -13,12 +13,11 @@ module.exports = (db) => {
                 AND order_id=2;`, [customerId]
       )
       .then(data => {
-        // console.log('data', data.rows);
         const orderCart = data.rows;
         res.json({ orderCart });
       })
       .catch(err => {
-        // console.log('err', err);
+        console.log('err', err);
       });
 
   });

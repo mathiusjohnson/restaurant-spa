@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 module.exports = (db) => {
   router.post('/', (req, res) => {
-    console.log('req.body', req.body.quantity);
-    // const id = req.params.id
     const menuItemId = req.body.menuItemId;
     const orderId = 2;
     const customerId = 2;
@@ -17,7 +15,6 @@ module.exports = (db) => {
               RETURNING *;`, [menuItemId, orderId, customerId, quantity]
       )
       .then(data => {
-        console.log('data', data.rows);
         const entries = data.rows;
         res.json({ entries });
       });

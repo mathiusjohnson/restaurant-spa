@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 module.exports = (db) => {
   router.post('/', (req, res) => {
-    // const id = req.params.id;
-    // console.log(id);
-    // console.log(req.body);
     const customerId = 2;
 
     db
@@ -16,12 +13,11 @@ module.exports = (db) => {
                     `, [customerId]
       )
       .then(data => {
-        // console.log('data', data.rows);
         const orderCart = data.rows;
         res.json({ orderCart });
       })
       .catch(err => {
-        // console.log('err', err);
+        console.log('err', err);
       });
 
   });

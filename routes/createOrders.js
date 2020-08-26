@@ -15,7 +15,6 @@ module.exports = (db) => {
         GROUP BY orders.id, menu_items.name;`, [orderId]
       )
       .then(data => {
-        // console.log('data', data.rows);
         const orders = data.rows;
         res.json({ orders });
       })

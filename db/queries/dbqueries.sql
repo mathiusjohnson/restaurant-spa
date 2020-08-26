@@ -68,3 +68,10 @@ SELECT customers.name, customers.phone_number, orders.id
 FROM customers
   JOIN orders ON customers.id = customer_id
 WHERE customers.id = 2;
+
+
+SELECT menu_items.name, price, customers.name, customers.phone_number
+FROM menu_items
+  JOIN order_items ON menu_item_id = menu_items.id
+  JOIN customers ON customers.id = customer_id
+WHERE customer_id = 2;

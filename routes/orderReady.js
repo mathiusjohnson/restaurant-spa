@@ -14,7 +14,7 @@ router.use(bodyParser.json());
 module.exports = (db) => {
   router.post('/', (req, res) => {
 
-    console.log("req: ", req);
+    // console.log("req: ", req);
     const id = 2;
     db.query(
       `SELECT menu_items.name, price, customers.name, customers.phone_number
@@ -30,25 +30,7 @@ module.exports = (db) => {
             to: '+12368388913'
           })
           .then(message => console.log(message.sid));
-        // console.log("this is data: " ,data);
-        // const order = data.rows;
-        // res.json({ order });
       });
   });
   return router;
 };
-//   const { name, phone } = req.body;
-//   const user = {
-//     name,
-//     phone
-//   };
-//   userDatabase.push(user);
-//   const welcomeMessage = 'hello, this is Caia testing';
-//   sendSms(user.phone, welcomeMessage);
-//   res.status(201).send({
-//     message: 'Account created successfully, kindly check your phone to activate your account!',
-//     data: user
-//   });
-// });
-// router.listen(port, () => {
-//   console.log(`Server running on port ${port}`);
