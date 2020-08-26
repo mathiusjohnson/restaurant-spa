@@ -5,9 +5,9 @@ module.exports = (db) => {
         console.log('req.body', req.body);
         // const id = req.params.id
         const menuItemId = 1;
-        const orderId = 1;
+        const orderId = 2;
         const customerId = 2;
-        const quantity = 0;
+        const quantity = 4;
         db
             .query(
                 `INSERT INTO order_items

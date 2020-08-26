@@ -37,8 +37,8 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const menu = require("./routes/menu");
 const addToCart = require("./routes/addToCart");
-const showCart = require("./routes/showCart")
-const showCartPost = require("./routes/showCartPost")
+const showCart = require("./routes/showCart");
+const showCartPost = require("./routes/showCartPost");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
