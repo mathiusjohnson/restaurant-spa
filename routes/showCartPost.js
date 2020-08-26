@@ -2,22 +2,28 @@ const express = require('express');
 const router = express.Router();
 module.exports = (db) => {
     router.post('/', (req, res) => {
-        // const id = req.params.id
-        const customerId = 1;
+        const id = req.params.id;
+        console.log(id);
+        console.log(req.body);
+        const customerId = 2;
 
         db
             .query(
-                `SELECT menu_items.*
-                FROM menu_items
-                  JOIN order_items ON menu_item_id = menu_items.id
-                  JOIN customers ON customers.id = customer_id
-                WHERE customer_id = $1;`, [customerId]
+                `SELECT * FROM menu_items, order_items
+                    WHERE order_items.menu_item_id=menu_items.id
+                    AND order_items.customer_id=$1
+                    AND order_id=2;
+                    `, [customerId]
             )
             .then(data => {
                 console.log('data', data.rows);
                 const orderCart = data.rows;
                 res.json({ orderCart });
+            })
+            .catch(err => {
+                console.log('err', err);
             });
+
     });
     return router;
 };
