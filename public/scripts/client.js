@@ -146,6 +146,7 @@ $(document).ready(function() {
         debugger
         const menuItem = { menuItemId: event.target.dataset.id, quantity: 2 };
         addCart(menuItem);
+        $('.order-cart').empty();
         showCart();
     });
 });
