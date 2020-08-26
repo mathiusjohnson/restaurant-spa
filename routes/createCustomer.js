@@ -7,18 +7,18 @@ module.exports = (db) => {
 
     db
       .query(
-        `SELECT * FROM menu_items, order_items
-                WHERE order_items.menu_item_id=menu_items.id
-                AND order_items.customer_id=$1
-                AND order_id=2;`, [customerId]
+        `SELECT customers.name, customers.phone_number, orders.id
+        FROM customers
+          JOIN orders ON customers.id = customer_id
+        WHERE customers.id = $1;`, [customerId]
       )
       .then(data => {
         // console.log('data', data.rows);
-        const orderCart = data.rows;
-        res.json({ orderCart });
+        const customer = data.rows;
+        res.json({ customer });
       })
       .catch(err => {
-        // console.log('err', err);
+        console.log('err', err);
       });
 
   });

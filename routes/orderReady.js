@@ -12,7 +12,7 @@ router.use(bodyParser.json());
 // const userDatabase = [];
 // Create users endpoint
 module.exports = (db) => {
-  router.post('/send', (req, res) => {
+  router.post('/', (req, res) => {
 
     console.log("req: ", req);
     const id = 2;
@@ -25,7 +25,7 @@ module.exports = (db) => {
       .then(data => {
         client.messages
           .create({
-            body: "this is a message from twilio",
+            body: "Your order is ready!",
             from: '+14132254219',
             to: '+12368388913'
           })

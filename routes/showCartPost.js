@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 module.exports = (db) => {
   router.post('/', (req, res) => {
-    const id = req.params.id;
+    // const id = req.params.id;
     // console.log(id);
     // console.log(req.body);
     const customerId = 2;

@@ -39,6 +39,9 @@ const addToCart = require("./routes/addToCart");
 const showCart = require("./routes/showCart");
 const showCartPost = require("./routes/showCartPost");
 const sendSMS = require("./routes/sendSMS");
+const createOrders = require("./routes/createOrders");
+const createCustomer = require('./routes/createCustomer');
+const orderReady = require('./routes/orderReady');
 // const placeOrder = require('./routes/placeOrder');
 
 // Mount all resource routes
@@ -47,7 +50,11 @@ app.use("/api/menu", menu(db));
 app.use("/api/addToCart", addToCart(db));
 app.use("/api/showCart", showCart(db));
 app.use("/api/showCartPost", showCartPost(db));
-app.use("/api/sendSMS", sendSMS(db));
+app.use("/api/sms", sendSMS(db));
+app.use("/api/orderReady", orderReady(db));
+app.use("/api/createOrders", createOrders(db));
+app.use("/api/createCustomer", createCustomer(db));
+
 
 // Note: mount other resources here, using the same pattern above
 

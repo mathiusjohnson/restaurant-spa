@@ -17,11 +17,11 @@ VALUES
 INSERT INTO menu_items
   (name, price, description, category_id)
 VALUES
-  ('Channa Paneer', 999, 'Beetroot water spinach okra water chestnut ricebean pea catsear courgette summer purslane. Water...', 1);
+  ('Bhindi Masala', 1099, 'Long Okra Pieces', 1);
 INSERT INTO menu_items
   (name, price, description, category_id)
 VALUES
-  ('Yellow Moong Dahl', 899, 'Celery quandong swiss chard chicory earthnut pea potato. ...', 1);
+  ('Aloo Mutter', 899, 'Potatoes and Green Peas', 1);
 INSERT INTO menu_items
   (name, price, description, category_id)
 VALUES
