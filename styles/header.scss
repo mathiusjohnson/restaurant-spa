@@ -7,12 +7,12 @@
     color: white;
     // background-color: rgba(225, 126, 60, 0.961);
     // border-radius: 60px;
-    border: 2px solid white;
+    // border: 2px solid white;
     padding-left: 30px;
     padding-right: 30px;
     margin-left: 10px;
     margin-left: 10px;
-    margin-top: 70px;
+    // margin-top: 70px;
     margin-bottom: 70px;
 }
 
@@ -40,6 +40,9 @@ nav header {
     display: flex;
 }
 
+nav header a {
+  text-decoration: none;
+}
 nav header h1 {
   display: flex;
   justify-content: center;

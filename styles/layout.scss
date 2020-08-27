@@ -4,7 +4,8 @@ $primary: #E4572E;
 'menu-items-container',
 'order-cart',
 'hero-image',
-'sidenav';
+'sidenav',
+'admin.scss';
 body {
     margin: 0;
     height: 100%;
@@ -19,4 +20,8 @@ body {
 .sticky {
     position: fixed;
     z-index: 9999;
+}
+
+button {
+  cursor: pointer;
 }
