@@ -12,7 +12,7 @@ router.use(bodyParser.json());
 // const userDatabase = [];
 // Create users endpoint
 module.exports = (db) => {
-  router.post('/send', (req, res) => {
+  router.post('/', (req, res) => {
     console.log("req body: ", req.body);
     const id = 2;
     db.query(

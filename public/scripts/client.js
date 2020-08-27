@@ -16,7 +16,7 @@ const createMenuItems = function(menuItems) {
       <span class="price">$${convertCentsToDollars(menuItems.price)}</span>
       <ul class="icons">
         <li><input id="numOfItems${menuItems.id}" type="number" required minlength="1" maxlength="1" placeholder="0"></li>
-        <li><button data-id=${menuItems.id} class="order-button">Add</button>
+        <li><button type="button" data-id=${menuItems.id} class="order-button">Add</button>
         </li>
       </ul>
     </footer>
@@ -73,8 +73,8 @@ const createPlaceOrder = function(items) {
     <p class="total"> Total: $${(convertCentsToDollars(sum)).toFixed(2)} </p>
     <p class="tax"> GST: $${(convertCentsToDollars(gst)).toFixed(2)} </p>
     <p class="total-amt"> Total Including GST: $${(convertCentsToDollars(totalGst)).toFixed(2)} </p>
-    <p class="place-order"> PLACE ORDER </p>
-    <button class='clear-cart'> CLEAR CART </button>
+    <button type="button" class="place-order"> PLACE ORDER </button>
+    <button type="button" class='clear-cart'> CLEAR CART </button>
     <p class="hidden thank-you">Thank you for your order! You will be contacted shortly to confirm details.</p>
   </div>`);
 };
@@ -165,6 +165,13 @@ const addUser = function() {
 
 };
 
+
+const sendSMS = function() {
+  $
+    .post('/api/sendSMS/')
+    .then((resp) => resp.sendSMS);
+};
+
 $(document).ready(function() {
   // loadMenu();
   //On click of nav button, pulls up menu skeleton
@@ -183,6 +190,14 @@ $(document).ready(function() {
     const itemsToCart = $(textFieldID).val();
     const menuItem = { menuItemId: event.target.dataset.id, quantity: itemsToCart };
     addCart(menuItem);
+  });
+
+  $('.order-cart').on('click', '.place-order', function(event) {
+    event.preventDefault();
+    $('.place-order').slideUp(500);
+    $('.clear-cart').slideUp(500);
+    $('.thank-you').slideDown(500);
+    sendSMS();
   });
 
   $("#total-cart").on('click', '.clear-cart', function(event) {
