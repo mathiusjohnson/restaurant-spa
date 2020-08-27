@@ -39,22 +39,51 @@
 }
 
 @media only screen and (max-width: 1024px) {
+
   .grandpa {
     display: flex;
     justify-content: space-between;
     font-size: xx-small;
-  }  .grandpa #menu-items-container input[type="number"]{
+  }
+
+  /* quantity field styling */
+  .grandpa #menu-items-container input[type="number"]{
     display: block;
-    background-color: white;
-  }  nav header h1 {
+    background-color: violet;
+    font-size: 1.5em;
+    width: 1.5em;
+    height: 1.2em;
+  }
+
+  /* ordering cart */
+  .grandpa .container-three {
+    font-size: x-large;
+  }
+
+  /* title of menu option */
+  .grandpa #menu-items-container .name-of-item .name {
+    font-size: xx-small;
+  }
+
+  nav header h1 {
     transition: linear;
     font-size: larger;
     /* background-color: violet; */
-  }  nav #nav-button {
+  }
+
+  nav #nav-button {
     font-size: smaller;
-  }  .icons {
+  }
+
+  .icons {
     /* display: flex;
     justify-content: space-around; */
     font-size: xx-small;
   }
+
+  /* add button */
+  .order-button {
+    font-size: xx-small;
+  }
+
 }
