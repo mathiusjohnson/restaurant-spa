@@ -1,22 +1,19 @@
 .empty-space-three {
-  width: 20%;
-  display: block;
+    width: 20%;
+    display: block;
 }
 
 .flex-column {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .order-cart {
-  margin-right: 40px;
-
+    margin-right: 40px;
 }
+
 .order-summary {
     margin-right: 10px;
-    // display: flex;
-    // flex-direction: column;
-    // float: right;
     border: 1px solid white;
     background: white;
     border-radius: 5px;

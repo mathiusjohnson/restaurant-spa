@@ -1,3 +1,4 @@
+let menuEntries = [];
 // ---------- Create menu items
 
 
@@ -26,9 +27,15 @@ const createMenuItems = function(menuItems) {
 
 const convertCentsToDollars = function(cents) {
   const dollars = cents / 100;
+<<<<<<< HEAD
   return dollars;
 };
 
+=======
+  return Math.round(dollars * 100) / 100;
+    // return dollars.toFixed(2);
+}
+>>>>>>> 4072a1fe78ca2b76c7ba174c849dc38448a44ac2
 const renderMenu = function(items) {
   for (const item of items) {
     const menuHTML = createMenuItems(item);
@@ -37,11 +44,12 @@ const renderMenu = function(items) {
 };
 
 const loadMenu = function() {
-  $
-    .get('/api/menu/')
-    .then((resp) => {
-      renderMenu(resp.entries);
-    });
+    $
+        .get('/api/menu/')
+        .then((resp) => {
+            menuEntries = resp.entries;
+            renderMenu(resp.entries);
+        });
 };
 
 
@@ -54,53 +62,94 @@ const createAddToCart = function(menuItems) {
   <div class="item1">
     <p>Quantity:${menuItems.quantity}</p>
     <p>${menuItems.name}</p>
-    <p>$${convertCentsToDollars(menuItems.price)}</p>
+    <p>$${(convertCentsToDollars(menuItems.price) * menuItems.quantity).toFixed(2)}</p>
   </div>
 </div>
 </form>
 `;
 };
 
-const createPlaceOrder = function() {
-  return (`<div class="total-div">
+const createPlaceOrder = function(items) {
+  // console.log(items);
+  let sum = 0;
+  for (item of items) {
+    sum += item.price * item.quantity;
+  }
+  // let sum = items[0].price * items[0].quantity;
+  // console.log(sum, "sum");
+  let gst = gstCalculator(sum);
+  // console.log(gst, "gst");
+  // debugger;
+  let totalGst = gst + sum;
+    return (`<div class="total-div">
     <p class="subtotal"> Food & Beverage Subtotal </p>
-    <p class="tax"> GST </p>
-    <p class="total"> Total </p>
-    <p class="total-amt"> Total </p>
+    <p class="total"> Total: $${(convertCentsToDollars(sum)).toFixed(2)} </p>
+    <p class="tax"> GST: $${(convertCentsToDollars(gst)).toFixed(2)} </p>
+    <p class="total-amt"> Total Including GST: $${(convertCentsToDollars(totalGst)).toFixed(2)} </p>
     <p class="place-order"> PLACE ORDER </p>
+    <button class='clear-cart'> CLEAR CART </button>
   </div>`);
 };
 
+
+//GST CALCULATOR FOR CART
+const gstCalculator = function (total) {
+  const gst = total * 0.05;
+  return gst;
+}
+// //I think it takes in two parameters, gst and total, total being the total of the cart
+// const totalGstCalculator = function(gst) {
+//   const totalGst = gst + total;
+//   return totalGst;
+// }
+
+//RENDERS BOTH GST TOTAL SECTION AND MENU ITEMS
 const renderCart = function(items) {
-  // console.log('items', items);
-  // loadCart();
-  for (const item of items) {
-    // console.log('item', item);
-    const cartHTML = createAddToCart(item);
-    $('.order-cart').prepend(cartHTML);
-  }
-  if ($('.order-cart .total-div').length === 0) {
-    $('.order-cart').append(createPlaceOrder());
-  }
+    // console.log('items', items);
+    // loadCart();
+    for (const item of items) {
+        // console.log('item', item);
+        //Holds HTML element for the menu items in the cart
+        const itemCartHTML = createAddToCart(item);
+        // console.log("this is itemCartHTML:", itemCartHTML);
+        $('.order-cart').prepend(itemCartHTML);
+      }
+      //Renders the createPlaceOrder for the menu
+      if ($('.total-div').length === 0) {
+        //Holds HTML element for the totals
+        const totalCartHTML = createPlaceOrder(items);
+        // console.log(totalCartHTML);
+
+        // console.log("this is totalCartHTML:", totalCartHTML);
+        $('.total-cart').append(totalCartHTML);
+    } else {
+      const totalCartHTML = createPlaceOrder(items);
+      $('.total-div').replaceWith(totalCartHTML);
+
+    }
 };
 
-const showCart = function(cartItems) {
-  $
-    .get('/api/showCart')
-    .then((resp) => {
-      console.log("response: ", resp);
-      renderCart(resp.orderCart);
-    });
+const showCart = function() {
+    $
+        .get('/api/showCart')
+        .then((resp) => {
+            // console.log("response: ", resp);
+            $('.order-cart').empty();
+            renderCart(resp.orderCart);
+        });
 };
 
 const addCart = function(menuItem) {
+    $
+        .post('/api/addToCart', menuItem)
+        .then(showCart);
+};
+
+//Clearing the cart
+const clearCart = function() {
   $
-    .post('/api/addToCart', menuItem)
-    .then((resp) => {
-      console.log('RESPONSE:', resp);
-      console.log("this is menu item: ", menuItem);
-      renderCart(resp.orderCart);
-    });
+      .post('/api/clearCart')
+      .then(showCart);
 };
 
 // const loadCart = function() {
@@ -133,34 +182,45 @@ const renderUser = function(user) {
 //         });
 
 // };
-$(document).ready(function() {
-  // loadMenu();
-  //On click of nav button, pulls up menu skeleton
-  $("#nav-button").on('click', function(event) {
-    event.preventDefault();
-    loadMenu();
-  });
-  //On click listener for add to cart,
-  $("#menu-items-container").on('click', ".order-button", function(event) {
-    event.preventDefault();
-    // addUser();
-    const textFieldID = `#numOfItems${event.target.dataset.id}`;
-    console.log("text field id: ", textFieldID);
-    const itemsToCart = $(textFieldID).val();
-    console.log("items to cart: ", itemsToCart);
-    //HARDCODED Quantit Data for menuItem instead of fetching from the page
-    //event.target.dataset.id is getting the specific id of the add buttons of each menu option
-    //yellow moong daal is id 1, channa paneer is id 2
-    //debugger stops the code on the webpage when it reaches that point so we can mess around on the webpage and do things in the console like, event.target, event.target.dataset.id
-    //quantity can be tackled in the same way, we need to read the .val of the textbox beside the addbutton
-    //Whats the ID for the menu item, and read the textbox and get quantity number
 
-    // debugger;
-    const menuItem = { menuItemId: event.target.dataset.id, quantity: itemsToCart };
-    // debugger
-    console.log("value: ", event.target);
-    addCart(menuItem);
-    $('.order-cart').empty();
-    showCart();
+$(document).ready(function() {
+    // loadMenu();
+    //On click of nav button, pulls up menu skeleton
+    $("#nav-button").on('click', function(event) {
+        event.preventDefault();
+        $('.hero-image').slideUp(500);
+        if (menuEntries.length === 0) {
+          loadMenu();
+        }
+    });
+    //On click listener for add to cart,
+    $("#menu-items-container").on('click', ".order-button", function(event) {
+        event.preventDefault();
+        // addUser();
+        const textFieldID = `#numOfItems${event.target.dataset.id}`;
+        // console.log("text field id: ", textFieldID);
+        const itemsToCart = $(textFieldID).val();
+        // console.log("items to cart: ", itemsToCart);
+
+        //HARDCODED Quantit Data for menuItem instead of fetching from the page
+        //event.target.dataset.id is getting the specific id of the add buttons of each menu option
+        //yellow moong daal is id 1, channa paneer is id 2
+        //debugger stops the code on the webpage when it reaches that point so we can mess around on the webpage and do things in the console like, event.target, event.target.dataset.id
+        //quantity can be tackled in the same way, we need to read the .val of the textbox beside the addbutton
+        //Whats the ID for the menu item, and read the textbox and get quantity number
+
+        // debugger;
+        const menuItem = { menuItemId: event.target.dataset.id, quantity: itemsToCart };
+        // debugger
+        // console.log("value: ", event.target);
+        addCart(menuItem);
+        // $('.order-cart').empty();
+        // showCart();
+    });
+
+    $("#total-cart").on('click', '.clear-cart', function(event) {
+      event.preventDefault();
+      console.log("Hey this is the clear cart button");
+      clearCart();
   });
 });

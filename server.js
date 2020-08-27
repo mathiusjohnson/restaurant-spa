@@ -38,6 +38,7 @@ const menu = require("./routes/menu");
 const addToCart = require("./routes/addToCart");
 const showCart = require("./routes/showCart");
 const showCartPost = require("./routes/showCartPost");
+const clearCart = require("./routes/clearCart");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -45,6 +46,7 @@ app.use("/api/menu", menu(db));
 app.use("/api/addToCart", addToCart(db));
 app.use("/api/showCart", showCart(db));
 app.use("/api/showCartPost", showCartPost(db));
+app.use("/api/clearCart", clearCart(db));
 
 // Note: mount other resources here, using the same pattern above
 
