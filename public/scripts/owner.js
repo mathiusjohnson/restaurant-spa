@@ -82,7 +82,6 @@ $(document).ready(function() {
   $("#admin-login").on('click', function(event) {
     event.preventDefault();
     $(this).slideUp(500);
-    $('#customer-login').slideUp(500);
     $('#nav-button').slideUp(500);
     $('#sidenav').slideUp(500);
     $('.hero-image').slideUp(500);

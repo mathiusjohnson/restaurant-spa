@@ -1,3 +1,4 @@
+let menuEntries = [];
 // ---------- Create menu items
 
 
@@ -24,11 +25,13 @@ const createMenuItems = function(menuItems) {
 `;
 };
 
+
+
 const convertCentsToDollars = function(cents) {
   const dollars = cents / 100;
-  return dollars;
+  return Math.round(dollars * 100) / 100;
+  // return dollars.toFixed(2);
 };
-
 const renderMenu = function(items) {
   for (const item of items) {
     const menuHTML = createMenuItems(item);
@@ -40,6 +43,7 @@ const loadMenu = function() {
   $
     .get('/api/menu/')
     .then((resp) => {
+      menuEntries = resp.entries;
       renderMenu(resp.entries);
     });
 };
@@ -47,49 +51,86 @@ const loadMenu = function() {
 
 // -----------  ADDING TO THE CART
 const createAddToCart = function(menuItems) {
+  // console.log('menuItems', menuItems);
   return `
-  <form action='/showCartPost' method="POST" class="bg-white">
+  <form action='/showCartPost' method="POST">
   <div class="flex-column">
   <div class="item1">
     <p>Quantity:${menuItems.quantity}</p>
     <p>${menuItems.name}</p>
-    <p>$${convertCentsToDollars(menuItems.price)}</p>
+    <p>$${(convertCentsToDollars(menuItems.price) * menuItems.quantity).toFixed(2)}</p>
   </div>
 </div>
 </form>
 `;
 };
 
-const createPlaceOrder = function() {
-  return (`
-  <div class="total-div"  class="bg-white">
+const createPlaceOrder = function(items) {
+  // console.log(items);
+  let sum = 0;
+  for (item of items) {
+    sum += item.price * item.quantity;
+  }
+  // let sum = items[0].price * items[0].quantity;
+  // console.log(sum, "sum");
+  let gst = gstCalculator(sum);
+  // console.log(gst, "gst");
+  // debugger;
+  let totalGst = gst + sum;
+  return (`<div class="total-div">
     <p class="subtotal"> Food & Beverage Subtotal </p>
-    <p class="tax"> GST </p>
-    <p class="total"> Total </p>
-    <p class="total-amt"> Total </p>
+    <p class="total"> Total: $${(convertCentsToDollars(sum)).toFixed(2)} </p>
+    <p class="tax"> GST: $${(convertCentsToDollars(gst)).toFixed(2)} </p>
+    <p class="total-amt"> Total Including GST: $${(convertCentsToDollars(totalGst)).toFixed(2)} </p>
     <p class="place-order"> PLACE ORDER </p>
-    <p class="place-order"> EMPTY CART </p>
+    <button class='clear-cart'> CLEAR CART </button>
   </div>`);
 };
 
+
+//GST CALCULATOR FOR CART
+const gstCalculator = function(total) {
+  const gst = total * 0.05;
+  return gst;
+};
+// //I think it takes in two parameters, gst and total, total being the total of the cart
+// const totalGstCalculator = function(gst) {
+//   const totalGst = gst + total;
+//   return totalGst;
+// }
+
+//RENDERS BOTH GST TOTAL SECTION AND MENU ITEMS
 const renderCart = function(items) {
   // console.log('items', items);
   // loadCart();
   for (const item of items) {
     // console.log('item', item);
-    const cartHTML = createAddToCart(item);
-    $('.order-cart').prepend(cartHTML);
+    //Holds HTML element for the menu items in the cart
+    const itemCartHTML = createAddToCart(item);
+    // console.log("this is itemCartHTML:", itemCartHTML);
+    $('.order-cart').prepend(itemCartHTML);
   }
-  if ($('.order-cart .total-div').length === 0) {
-    $('.order-cart').append(createPlaceOrder());
+  //Renders the createPlaceOrder for the menu
+  if ($('.total-div').length === 0) {
+    //Holds HTML element for the totals
+    const totalCartHTML = createPlaceOrder(items);
+    // console.log(totalCartHTML);
+
+    // console.log("this is totalCartHTML:", totalCartHTML);
+    $('.total-cart').append(totalCartHTML);
+  } else {
+    const totalCartHTML = createPlaceOrder(items);
+    $('.total-div').replaceWith(totalCartHTML);
+
   }
 };
 
-const showCart = function(cartItems) {
+const showCart = function() {
   $
     .get('/api/showCart')
     .then((resp) => {
-      console.log("response: ", resp);
+      // console.log("response: ", resp);
+      $('.order-cart').empty();
       renderCart(resp.orderCart);
     });
 };
@@ -97,12 +138,23 @@ const showCart = function(cartItems) {
 const addCart = function(menuItem) {
   $
     .post('/api/addToCart', menuItem)
-    .then((resp) => {
-      console.log('RESPONSE:', resp);
-      console.log("this is menu item: ", menuItem);
-      renderCart(resp.orderCart);
-    });
+    .then(showCart);
 };
+
+//Clearing the cart
+const clearCart = function() {
+  $
+    .post('/api/clearCart')
+    .then(showCart);
+};
+
+// const loadCart = function() {
+//     $
+//         .post('/api/showCartPost')
+//         .then((resp) => resp.orderCart);
+// };
+
+// --------- adding a user to header
 
 const createUser = function(user) {
   return `
@@ -117,26 +169,6 @@ const renderUser = function(user) {
   $('#users-cart').append(userHTML);
 };
 
-// const addUser = function() {
-//     $
-//         .post('/api/users')
-//         .then((resp) => {
-//             // console.log("response: ", resp);
-//             renderUser(resp.users[0]);
-//         });
-
-// };
-
-const addUser = function() {
-  $
-    .post('/api/users')
-    .then((resp) => {
-      // console.log("response: ", resp);
-      renderUser(resp.users[0]);
-    });
-
-};
-
 const sendSMS = function() {
   $
     .post('/api/sms/send')
@@ -145,17 +177,26 @@ const sendSMS = function() {
 
 $(document).ready(function() {
   // loadMenu();
+  $('#header-reset').click(function(event) {
+    event.preventDefault();
+    $('#admin-login').slideDown(500);
+    $('#nav-button').slideDown(500);
+    $('.hero-image').slideDown(500);
+    $('#sidenav').slideUp(500);
+    $('.#menu-items-container').slideUp(500);
+
+  });
   //On click of nav button, pulls up menu skeleton
   $("#nav-button").on('click', function(event) {
     event.preventDefault();
     $('.hero-image').slideUp(500);
-    loadMenu();
-
+    if (menuEntries.length === 0) {
+      loadMenu();
+    }
   });
   //On click listener for add to cart,
   $("#menu-items-container").on('click', ".order-button", function(event) {
     event.preventDefault();
-    addUser();
     const textFieldID = `#numOfItems${event.target.dataset.id}`;
     const itemsToCart = $(textFieldID).val();
     const menuItem = { menuItemId: event.target.dataset.id, quantity: itemsToCart };
@@ -166,5 +207,10 @@ $(document).ready(function() {
       event.preventDefault();
       sendSMS();
     });
+    $("#total-cart").on('click', '.clear-cart', function(event) {
+      event.preventDefault();
+      clearCart();
+    });
   });
+
 });
