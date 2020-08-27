@@ -1,3 +1,6 @@
+let menuEntries = [];
+
+
 // ---------- Create menu items
 
 
@@ -37,9 +40,11 @@ const renderMenu = function(items) {
 };
 
 const loadMenu = function() {
+
     $
         .get('/api/menu/')
         .then((resp) => {
+            menuEntries = resp.entries;
             renderMenu(resp.entries);
         });
 };
@@ -147,7 +152,14 @@ $(document).ready(function() {
     //On click of nav button, pulls up menu skeleton
     $("#nav-button").on('click', function(event) {
         event.preventDefault();
-        loadMenu();
+        $('.hero-image').slideUp(500);
+
+
+        if (menuEntries.length === 0) {
+            console.log('menuEntries:', menuEntries);
+            loadMenu();
+        }
+
     });
     //On click listener for add to cart,
     $("#menu-items-container").on('click', ".order-button", function(event) {
