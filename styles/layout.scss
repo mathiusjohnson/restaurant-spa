@@ -1,11 +1,12 @@
 $primary: #E4572E;
-@import 'header',
+@import
+'header',
 'footer',
 'menu-items-container',
 'order-cart',
 'hero-image',
-'sidenav',
-'admin.scss';
+'admin.scss',
+'sidenav';
 body {
     margin: 0;
     height: 100%;

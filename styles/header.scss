@@ -43,6 +43,15 @@ nav header {
 nav header a {
   text-decoration: none;
 }
+
+nav header button {
+  background-color: #E4572E;
+  font-size: 2em;
+  border: none;
+  color: white;
+  margin-right: 1em;
+}
+
 nav header h1 {
   display: flex;
   justify-content: center;

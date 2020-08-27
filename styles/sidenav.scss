@@ -49,19 +49,24 @@
   /* quantity field styling */
   .grandpa #menu-items-container input[type="number"]{
     display: block;
-    // background-color: violet;
-    font-size: 1.5em;
-    width: 1.5em;
-    height: 1.2em;
+    background-color: white;
+    font-size: 2.2em;
+    // width: 5em;
+    // height: 2.5em;
   }
 
   /* ordering cart */
   .grandpa .container-three {
-    font-size: x-large;
+    font-size: large;
   }
 
   /* title of menu option */
   .grandpa #menu-items-container .name-of-item .name {
+    font-size: medium;
+  }
+
+  /* add button */
+  .order-button {
     font-size: xx-small;
   }
 
@@ -71,7 +76,13 @@
     /* background-color: violet; */
   }
 
+  /* See Menu in NAV */
   nav #nav-button {
+    font-size: smaller;
+  }
+
+  /* Punjabi Tadka & Login Admin Button in NAV */
+  nav header button {
     font-size: smaller;
   }
 
@@ -81,9 +92,5 @@
     font-size: xx-small;
   }
 
-  /* add button */
-  .order-button {
-    font-size: xx-small;
-  }
 
 }
