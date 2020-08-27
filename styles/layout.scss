@@ -1,16 +1,21 @@
 $primary: #E4572E;
-@import 'header',
-'sidenav',
+@import
+'header',
 'footer',
 'menu-items-container',
 'order-cart',
 'hero-image',
-'admin.scss';
+'admin.scss',
+'sidenav';
 body {
     margin: 0;
     height: 100%;
     background-color: #EEE;
     font-size: 24px;
+}
+
+.grandpa .container-three {
+  margin-right: 3em;
 }
 
 .sticky {

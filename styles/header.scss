@@ -39,20 +39,31 @@ nav header {
 nav header a {
   text-decoration: none;
 }
-nav header h1 {
-    font-size: 4em;
-    color: white;
-    width: 12em;
-    text-align: right;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
 
 nav header button {
-    background-color: $primary;
-    font-size: 2em;
-    border: none;
-    color: white;
-    margin-right: 1em;
+  background-color: #E4572E;
+  font-size: 2em;
+  border: none;
+  color: white;
+  margin-right: 1em;
+}
+
+nav header h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  width: 12em;
+  color: white;
+  margin-right: -0.95em;
+  text-align: right;
+}
+
+nav #nav-button {
+  cursor: pointer;
+  border: transparent;
+  background-color: $primary;
+  color: white;
+  font-size: 1.5em;
+  margin-right: 1em;
 }
