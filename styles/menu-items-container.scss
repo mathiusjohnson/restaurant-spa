@@ -1,6 +1,6 @@
 #container {
-    display: flex;
-    margin-top: 50px;
+  display: flex;
+  margin-top: 50px;
 }
 
 #menu-items-container {
@@ -8,8 +8,8 @@
 }
 
 .empty-space-two {
-    width: 70%;
-    display: block;
+  width: 70%;
+  display: block;
 }
 
 article section {
@@ -24,7 +24,7 @@ article section {
     // border: 2px solid darkgrey;
     border-radius: 100px;
     margin: 5%;
-    padding: 3%;
+    padding: 8%;
 }
 
 .menu-items:hover {
@@ -32,48 +32,48 @@ article section {
 }
 
 header .name {
-    font-size: 2.5em;
+  font-size: 2.5em;
 }
 
 main p {
-    font-size: 1.5em;
+  font-size: 1.5em;
 }
 
+
 footer ul li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .icons {
-    font-size: 14px;
-    display: flex;
-    justify-content: flex-end;
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .menu-item-footer {
-    display: flex;
-    justify-content: flex-end;
-    font-size: 2em;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 2em;
 }
 
-.fa-minus,
-.fa-plus {
-    font-size: 1.5em;
-    padding-top: .5em;
-    color: $primary;
+.fa-minus, .fa-plus{
+  font-size: 1.5em;
+  padding-top: .5em;
+  color: $primary;
 }
 
 .menu-item-footer input {
-    font-size: 2em;
-    width: 2em;
-    height: 1.2em;
+  font-size: 2em;
+  width: 2em;
+  height: 1.2em;
 }
 
 .menu-item-footer button {
-    background-color: $primary;
-    font-size: 2em;
-    color: white;
-    border: none;
-    border-radius: 5px;
+  background-color: $primary;
+  font-size: 2em;
+  color: white;
+  border: none;
+  border-radius: 5px;
 }
 
 .order-button:hover {

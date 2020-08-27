@@ -1,10 +1,12 @@
 $primary: #E4572E;
-@import 'header',
-'sidenav',
+@import
+'header',
 'footer',
 'menu-items-container',
 'order-cart',
-'hero-image';
+'hero-image',
+'admin.scss',
+'sidenav';
 body {
     margin: 0;
     height: 100%;
@@ -12,7 +14,15 @@ body {
     font-size: 24px;
 }
 
+.grandpa .container-three {
+  margin-right: 3em;
+}
+
 .sticky {
     position: fixed;
     z-index: 9999;
+}
+
+button {
+  cursor: pointer;
 }

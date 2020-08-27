@@ -3,18 +3,18 @@ const router = express.Router();
 
 module.exports = (db) => {
 
-    router.post('/placeOrder', (req, res) => {
-        database.placeOrder({...req.body, customer_id })
-            .then(orders => {
-                orders = calcTotalSales(orders);
-                res.send(orders);
-            })
-            .catch(e => {
-                console.error(e);
-                res.send(e);
-            });
-    });
-    return router;
+  router.post('/placeOrder', (req, res) => {
+    database.placeOrder({...req.body, customer_id })
+      .then(orders => {
+        orders = calcTotalSales(orders);
+        res.send(orders);
+      })
+      .catch(e => {
+        console.error(e);
+        res.send(e);
+      });
+  });
+  return router;
 
 };
 
