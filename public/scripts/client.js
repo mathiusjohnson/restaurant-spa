@@ -82,7 +82,7 @@ const createPlaceOrder = function(items) {
     <p class="total"> Total: $${(convertCentsToDollars(sum)).toFixed(2)} </p>
     <p class="tax"> GST: $${(convertCentsToDollars(gst)).toFixed(2)} </p>
     <p class="total-amt"> Total Including GST: $${(convertCentsToDollars(totalGst)).toFixed(2)} </p>
-    <p class="place-order"> PLACE ORDER </p>
+    <button class="place-order"> PLACE ORDER </button>
     <button class='clear-cart'> CLEAR CART </button>
   </div>`);
 };
