@@ -38,59 +38,57 @@
     color: #F96E46;
 }
 
-@media only screen and (max-width: 1024px) {
+// @media only screen and (max-width: 1024px) {
 
-  .grandpa {
-    display: flex;
-    justify-content: space-between;
-    font-size: xx-small;
-  }
+//   .grandpa {
+//     display: flex;
+//     justify-content: space-between;
+//     font-size: xx-small;
+//   }
 
-  /* quantity field styling */
-  .grandpa #menu-items-container input[type="number"]{
-    display: block;
-    background-color: white;
-    font-size: 2.2em;
-    // width: 5em;
-    // height: 2.5em;
-  }
+//   /* quantity field styling */
+//   .grandpa #menu-items-container input[type="number"]{
+//     display: block;
+//     background-color: white;
+//     font-size: 2.2em;
+//     // width: 5em;
+//     // height: 2.5em;
+//   }
 
-  /* ordering cart */
-  .grandpa .container-three {
-    font-size: large;
-  }
+//   /* ordering cart */
+//   .grandpa .container-three {
+//     font-size: large;
+//   }
 
-  /* title of menu option */
-  .grandpa #menu-items-container .name-of-item .name {
-    font-size: medium;
-  }
+//   /* title of menu option */
+//   .grandpa #menu-items-container .name-of-item .name {
+//     font-size: medium;
+//   }
 
-  /* add button */
-  .order-button {
-    font-size: xx-small;
-  }
+//   /* add button */
+//   .order-button {
+//     font-size: xx-small;
+//   }
 
-  nav header h1 {
-    transition: linear;
-    font-size: larger;
-    /* background-color: violet; */
-  }
+//   nav header h1 {
+//     transition: linear;
+//     font-size: larger;
+//     /* background-color: violet; */
+//   }
 
-  /* See Menu in NAV */
-  nav #nav-button {
-    font-size: smaller;
-  }
+//   /* See Menu in NAV */
+//   nav #nav-button {
+//     font-size: smaller;
+//   }
 
-  /* Punjabi Tadka & Login Admin Button in NAV */
-  nav header button {
-    font-size: smaller;
-  }
+//   /* Punjabi Tadka & Login Admin Button in NAV */
+//   nav header button {
+//     font-size: smaller;
+//   }
 
-  .icons {
-    /* display: flex;
-    justify-content: space-around; */
-    font-size: xx-small;
-  }
-
-
-}
+//   .icons {
+//     /* display: flex;
+//     justify-content: space-around; */
+//     font-size: xx-small;
+//   }
+// }
