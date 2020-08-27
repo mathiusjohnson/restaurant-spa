@@ -47,5 +47,5 @@ module.exports = (db) => {
         }
       });
   });
-  return router; ``;
+  return router;
 };

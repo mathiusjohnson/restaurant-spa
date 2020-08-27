@@ -15,6 +15,5 @@ $(document).ready(function() {
                 }).then(function() {
                     getMenuItems();
                     $('#tweet-text').val('');
-                    // console.log();
                 })
             });

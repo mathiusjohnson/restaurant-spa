@@ -22,10 +22,6 @@
     right: 0;
 }
 
-// .item1 {
-//     display: flex;
-//     justify-content: flex-start;
-// }
 ul li {
     list-style-type: none;
 }
@@ -35,14 +31,15 @@ ul li {
     font-size: 20px;
 }
 
+.bg-white {
+  background-color: white;
+}
 .place-order {
     background: rgb(18, 95, 202);
     color: white;
     width: inherit;
-    // height: 50px;
     text-align: center;
     border-radius: 5px;
-    // margin-left: 50px;
 }
 
 .subtotal {
@@ -65,4 +62,8 @@ ul li {
 .your-order-summary {
     display: flex;
     flex-direction: row;
+}
+
+.hidden {
+  display: none;
 }
