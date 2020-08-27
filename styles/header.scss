@@ -3,15 +3,17 @@
     background-color: $primary;
 }
 
-#nav-button:hover {
-    color: white;
-    background-color: #a2310f;
-    transition-duration: 1s;
-    transition-duration: 1s;
-}
-
+// #nav-button {
+//     color: white;
+//     // background-color: rgba(225, 126, 60, 0.961);
+//     // border-radius: 60px;
+//     // border: 2px solid white;
+//     padding-left: 30px;
+//     padding-right: 30px;
+//     // margin-top: 70px;
+// }
 nav header {
-    height: 15vh;
+    height: 150px;
     justify-content: space-between;
     position: fixed;
     z-index: 9999;
@@ -24,35 +26,55 @@ nav header {
 
 .flex {
     display: flex;
+    align-items: center;
 }
 
 nav header a {
-  text-decoration: none;
-}
-
-nav header button {
-  background-color: #E4572E;
-  font-size: 2em;
-  border: none;
-  color: white;
-  margin-right: 1em;
+    text-decoration: none;
 }
 
 nav header h1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3em;
-  width: 12em;
-  color: white;
-  margin-right: -0.95em;
-  text-align: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    width: 12em;
+    color: white;
+    margin-right: -0.95em;
+    text-align: right;
 }
 
-nav #nav-button {
-  cursor: pointer;
-  border: transparent;
+// nav #nav-button {
+//     cursor: pointer;
+//     border: transparent;
+//     background-color: $primary;
+//     color: white;
+//     font-size: 1.5em;
+// }
+nav header button {
   background-color: $primary;
+  font-size: 18px;
   color: white;
-  margin-right: 1em;
+  border: 2px solid white;
+  padding: .5rem 1rem;
+  height: fit-content;
+  border-radius: 40px;
+}
+
+.logo {
+    width: 250px;
+    padding-top: 40px;
+    padding-left: 10px;
+    // box-sizing: unset;
+}
+
+.shadow:hover {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 10px 10px 22px 10px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+}
+
+.nav-button-container {
+    padding-right: 20px;
 }
