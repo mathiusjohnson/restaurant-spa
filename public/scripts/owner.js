@@ -95,7 +95,8 @@ $(document).ready(function() {
   $("#orders-container").on('click', '#select-order', function(event) {
     event.preventDefault();
     $(this).slideUp(500);
-    $('#orders-container').empty();
+    $('#orders-container').slideUp(500);
+    $('#orders-container').empty(500);
     loadCustomer();
     loadOrderItems();
   });

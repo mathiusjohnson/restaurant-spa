@@ -183,12 +183,17 @@ $(document).ready(function() {
     // $('#menu-items-container').empty();
     $('#orders-container').empty();
     $('#customer-container').empty();
+    $('#customer-container').slideUp(500);
+
 
   });
   //On click of nav button, pulls up menu skeleton
   $("#nav-button").on('click', function(event) {
     event.preventDefault();
     $('.hero-image').slideUp(500);
+    $('#orders-container').empty();
+    $('#customer-container').empty();
+    $('#customer-container').slideUp(500);
     if (menuEntries.length === 0) {
       loadMenu();
     }
