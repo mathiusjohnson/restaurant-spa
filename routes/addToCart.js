@@ -12,14 +12,19 @@ module.exports = (db) => {
         // else we want to add to cart
          db.query(`SELECT * FROM order_items where menu_item_id = $1 AND customer_id = $2;`, [menuItemId, customerId])
             .then((result1) => {
-                console.log('result1:', result1.rows)
+                // console.log('result1:', result1.rows)
                 if (result1.rows.length > 0) {
+                  console.log(req.body.quantity);
+                  console.log(parseInt(result1.rows[0].quantity));
                     const newQuantity = parseInt(result1.rows[0].quantity) + parseInt(req.body.quantity);
+                    console.log("this is newQuantity:", newQuantity);
+
                     db.query(`UPDATE order_items set quantity = $1 where menu_item_id = $2 AND customer_id= $3;`, [newQuantity, menuItemId, customerId])
                         .then((result2) => {
-                            db.query(`SELECT * FROM order_items`)
+                            db.query(`SELECT order_items.*, menu_items.price FROM order_items JOIN menu_items ON menu_items.id = order_items.menu_item_id`)
                                 .then((result3) => {
                                     const orderItems = result3.rows
+                                    console.log(orderItems);
                                     res.json(orderItems)
                                 })
                         })
@@ -27,9 +32,12 @@ module.exports = (db) => {
                     db.query(`INSERT INTO order_items (menu_item_id, order_id, customer_id, quantity) VALUES($1, $2, $3, $4)
             RETURNING *;`, [menuItemId, orderId, customerId, quantity])
                         .then(data => {
-                            db.query(`SELECT * FROM order_items`)
+                            db.query(`SELECT order_items.*, menu_items.price FROM order_items JOIN menu_items ON menu_items.id = order_items.menu_item_id`)
                                 .then((result3) => {
-                                    const orderItems = result3.rows
+
+                                    const orderItems = result3.rows;
+                                    console.log("this is orderItems:", orderItems);
+
                                     res.json(orderItems)
                                 })
                                 // console.log('data', data.rows);
