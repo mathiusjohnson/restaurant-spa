@@ -168,7 +168,7 @@ const addUser = function() {
 
 const sendSMS = function() {
   $
-    .post('/api/sms/send/')
+    .post('/api/sms/send')
     .then((resp) => resp.sendSMS);
 };
 
@@ -177,10 +177,14 @@ $(document).ready(function() {
   //On click of nav button, pulls up menu skeleton
   $("#nav-button").on('click', function(event) {
     event.preventDefault();
+<<<<<<< HEAD
     $('.hero-image').slideUp(500);
     if (menuEntries.length === 0) {
       loadMenu();
     }
+=======
+    loadMenu();
+>>>>>>> parent of 0467079... one more button to add then twilio is good
   });
   //On click listener for add to cart,
   $("#menu-items-container").on('click', ".order-button", function(event) {
@@ -194,10 +198,10 @@ $(document).ready(function() {
 
   $('.order-cart').on('click', '.place-order', function(event) {
     event.preventDefault();
+    sendSMS();
     $('.place-order').slideUp(500);
     $('.clear-cart').slideUp(500);
     $('.thank-you').slideDown(500);
-    sendSMS();
   });
 
   $("#total-cart").on('click', '.clear-cart', function(event) {
