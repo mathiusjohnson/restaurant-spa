@@ -5,7 +5,6 @@
 
 #menu-items-container {
     width: 60vw;
-    border: 2px solid black;
 }
 
 .empty-space-two {
@@ -21,6 +20,15 @@ article section {
     display: flex;
     flex-direction: column;
     width: 65%;
+    background-color: white;
+    // border: 2px solid darkgrey;
+    border-radius: 100px;
+    margin: 5%;
+    padding: 3%;
+}
+
+.menu-items:hover {
+    box-shadow: 20px 20px 30px -10px #192824;
 }
 
 header .name {
@@ -66,4 +74,9 @@ footer ul li {
     color: white;
     border: none;
     border-radius: 5px;
+}
+
+.order-button:hover {
+    color: #FFFFFF;
+    background-color: #a2310f;
 }
