@@ -7,11 +7,6 @@
     width: 60vw;
 }
 
-.empty-space-two {
-  width: 70%;
-  display: block;
-}
-
 article section {
     margin: 0 auto;
 }
@@ -19,9 +14,7 @@ article section {
 .menu-items {
     display: flex;
     flex-direction: column;
-    width: 65%;
     background-color: white;
-    // border: 2px solid darkgrey;
     border-radius: 100px;
     margin: 5%;
     padding: 3%;
