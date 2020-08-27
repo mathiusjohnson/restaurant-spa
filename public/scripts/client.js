@@ -168,7 +168,7 @@ const addUser = function() {
 
 const sendSMS = function() {
   $
-    .post('/api/send/SMS/')
+    .post('/api/sms/send/')
     .then((resp) => resp.sendSMS);
 };
 
