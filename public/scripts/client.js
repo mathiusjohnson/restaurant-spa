@@ -105,6 +105,7 @@ const renderCart = function(items) {
         // console.log("this is itemCartHTML:", itemCartHTML);
 
         //to fix stutter, remove old dom and prepend new dom
+        // $('.total-cart').empty();
         $('.order-cart').prepend(itemCartHTML);
       }
       //Renders the createPlaceOrder for the menu
@@ -122,11 +123,12 @@ const renderCart = function(items) {
     }
 };
 
-const showCart = function(cartItems) {
+const showCart = function() {
     $
         .get('/api/showCart')
         .then((resp) => {
             // console.log("response: ", resp);
+            $('.order-cart').empty();
             renderCart(resp.orderCart);
         });
 };
@@ -134,11 +136,7 @@ const showCart = function(cartItems) {
 const addCart = function(menuItem) {
     $
         .post('/api/addToCart', menuItem)
-        .then((resp) => {
-            // console.log('RESPONSE:', resp);
-            // console.log("this is menu item: ", menuItem);
-            renderCart(resp.orderCart);
-        });
+        .then(showCart);
 };
 
 // const loadCart = function() {
@@ -187,6 +185,7 @@ $(document).ready(function() {
         // console.log("text field id: ", textFieldID);
         const itemsToCart = $(textFieldID).val();
         // console.log("items to cart: ", itemsToCart);
+
         //HARDCODED Quantit Data for menuItem instead of fetching from the page
         //event.target.dataset.id is getting the specific id of the add buttons of each menu option
         //yellow moong daal is id 1, channa paneer is id 2
@@ -199,7 +198,7 @@ $(document).ready(function() {
         // debugger
         // console.log("value: ", event.target);
         addCart(menuItem);
-        $('.order-cart').empty();
-        showCart();
+        // $('.order-cart').empty();
+        // showCart();
     });
 });
