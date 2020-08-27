@@ -79,6 +79,7 @@ const createPlaceOrder = function(items) {
     <p class="tax"> GST: $${(convertCentsToDollars(gst)).toFixed(2)} </p>
     <p class="total-amt"> Total Including GST: $${(convertCentsToDollars(totalGst)).toFixed(2)} </p>
     <p class="place-order"> PLACE ORDER </p>
+    <button class='clear-cart'> CLEAR CART </button>
   </div>`);
 };
 
@@ -137,6 +138,13 @@ const addCart = function(menuItem) {
     $
         .post('/api/addToCart', menuItem)
         .then(showCart);
+};
+
+//Clearing the cart
+const clearCart = function() {
+  $
+      .post('/api/clearCart')
+      .then(showCart);
 };
 
 // const loadCart = function() {
@@ -201,4 +209,10 @@ $(document).ready(function() {
         // $('.order-cart').empty();
         // showCart();
     });
+
+    $("#total-cart").on('click', '.clear-cart', function(event) {
+      event.preventDefault();
+      console.log("Hey this is the clear cart button");
+      clearCart();
+  });
 });
