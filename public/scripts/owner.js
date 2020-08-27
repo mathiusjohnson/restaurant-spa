@@ -85,9 +85,6 @@ $(document).ready(function() {
     $('#nav-button').slideUp(500);
     $('#sidenav').slideUp(500);
     $('.hero-image').slideUp(500);
-    $('#menu-items-container').slideUp(500);
-    $('#orders-container').empty();
-    $('#customer-container').empty();
     loadOrders();
   });
 
@@ -95,7 +92,6 @@ $(document).ready(function() {
   $("#orders-container").on('click', '#select-order', function(event) {
     event.preventDefault();
     $(this).slideUp(500);
-    $('#orders-container').empty();
     loadCustomer();
     loadOrderItems();
   });
@@ -103,7 +99,6 @@ $(document).ready(function() {
   $("#orders-container").on('click', '#back-to-orders', function(event) {
     event.preventDefault();
     $(this).slideUp(500);
-    $('#customer-container').empty();
     loadOrders();
 
   });  $('#customer-container').on('click', '#order-ready', function(event) {

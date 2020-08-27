@@ -25,6 +25,8 @@ const createMenuItems = function(menuItems) {
 `;
 };
 
+
+
 const convertCentsToDollars = function(cents) {
   const dollars = cents / 100;
   return Math.round(dollars * 100) / 100;
@@ -45,6 +47,7 @@ const loadMenu = function() {
       renderMenu(resp.entries);
     });
 };
+
 
 // -----------  ADDING TO THE CART
 const createAddToCart = function(menuItems) {
@@ -180,9 +183,7 @@ $(document).ready(function() {
     $('#nav-button').slideDown(500);
     $('.hero-image').slideDown(500);
     $('#sidenav').slideUp(500);
-    // $('#menu-items-container').empty();
-    $('#orders-container').empty();
-    $('#customer-container').empty();
+    $('.#menu-items-container').slideUp(500);
 
   });
   //On click of nav button, pulls up menu skeleton
@@ -192,7 +193,6 @@ $(document).ready(function() {
     if (menuEntries.length === 0) {
       loadMenu();
     }
-    $('#menu-items-container').slideDown(500);
   });
   //On click listener for add to cart,
   $("#menu-items-container").on('click', ".order-button", function(event) {
