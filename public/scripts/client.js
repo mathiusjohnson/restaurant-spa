@@ -48,7 +48,7 @@ const loadMenu = function() {
 // -----------  ADDING TO THE CART
 const createAddToCart = function(menuItems) {
   return `
-  <form action='/showCartPost' method="POST">
+  <form action='/showCartPost' method="POST" class="bg-white">
   <div class="flex-column">
   <div class="item1">
     <p>Quantity:${menuItems.quantity}</p>
@@ -61,12 +61,15 @@ const createAddToCart = function(menuItems) {
 };
 
 const createPlaceOrder = function() {
-  return (`<div class="total-div">
+  return (`
+  <div class="total-div"  class="bg-white">
     <p class="subtotal"> Food & Beverage Subtotal </p>
     <p class="tax"> GST </p>
     <p class="total"> Total </p>
     <p class="total-amt"> Total </p>
     <p class="place-order"> PLACE ORDER </p>
+    <p class="place-order"> EMPTY CART </p>
+
   </div>`);
 };
 
@@ -101,14 +104,6 @@ const addCart = function(menuItem) {
       renderCart(resp.orderCart);
     });
 };
-
-// const loadCart = function() {
-//     $
-//         .post('/api/showCartPost')
-//         .then((resp) => resp.orderCart);
-// };
-
-// --------- adding a user to header
 
 const createUser = function(user) {
   return `

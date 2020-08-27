@@ -28,11 +28,8 @@ module.exports = (db) => {
         const phone = order.phone_number;
         let itemAndQuantity = [];
         for (const rows of data.rows) {
-          console.log("each object of data: ", rows);
           itemAndQuantity.push(` ${rows.quantity} ${rows.menu_item}`);
         }
-
-        console.log(order);
         client.messages
           .create({
             body: `A new order has been placed! ${customer} ordered: ${itemAndQuantity}. Contact details: ${phone}.`,

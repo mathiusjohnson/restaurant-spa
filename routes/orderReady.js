@@ -17,7 +17,7 @@ module.exports = (db) => {
     // console.log("req: ", req);
     const id = 2;
     db.query(
-      `SELECT menu_items.name, customers.name, customers.phone_number
+      `SELECT menu_items.name as menu_item, customers.name, customers.phone_number, order_items.quantity
       FROM menu_items
       JOIN order_items ON menu_item_id = menu_items.id
       JOIN customers ON customers.id = customer_id
@@ -26,7 +26,6 @@ module.exports = (db) => {
         console.log(data.rows);
         const order = data.rows[0];
         const customer = order.name;
-        const phone = order.phone_number;
         let itemAndQuantity = [];
         for (const rows of data.rows) {
           console.log("each object of data: ", rows);
