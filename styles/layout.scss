@@ -4,7 +4,8 @@ $primary: #E4572E;
 'footer',
 'menu-items-container',
 'order-cart',
-'hero-image';
+'hero-image',
+'admin.scss';
 body {
     margin: 0;
     height: 100%;
@@ -15,4 +16,8 @@ body {
 .sticky {
     position: fixed;
     z-index: 9999;
+}
+
+button {
+  cursor: pointer;
 }

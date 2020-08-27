@@ -1,4 +1,3 @@
-let menuEntries = [];
 // ---------- Create menu items
 
 
@@ -16,7 +15,7 @@ const createMenuItems = function(menuItems) {
       <span class="price">$${convertCentsToDollars(menuItems.price)}</span>
       <ul class="icons">
         <li><input id="numOfItems${menuItems.id}" type="number" required minlength="1" maxlength="1" placeholder="0"></li>
-        <li><button type="button" data-id=${menuItems.id} class="order-button">Add</button>
+        <li><button data-id=${menuItems.id} class="order-button">Add</button>
         </li>
       </ul>
     </footer>
@@ -27,8 +26,9 @@ const createMenuItems = function(menuItems) {
 
 const convertCentsToDollars = function(cents) {
   const dollars = cents / 100;
-  return Math.round(dollars * 100) / 100;
+  return dollars;
 };
+
 const renderMenu = function(items) {
   for (const item of items) {
     const menuHTML = createMenuItems(item);
@@ -40,7 +40,6 @@ const loadMenu = function() {
   $
     .get('/api/menu/')
     .then((resp) => {
-      menuEntries = resp.entries;
       renderMenu(resp.entries);
     });
 };
@@ -49,74 +48,48 @@ const loadMenu = function() {
 // -----------  ADDING TO THE CART
 const createAddToCart = function(menuItems) {
   return `
-  <form action='/showCartPost' method="POST">
+  <form action='/showCartPost' method="POST" class="bg-white">
   <div class="flex-column">
   <div class="item1">
     <p>Quantity:${menuItems.quantity}</p>
     <p>${menuItems.name}</p>
-    <p>$${(convertCentsToDollars(menuItems.price) * menuItems.quantity).toFixed(2)}</p>
+    <p>$${convertCentsToDollars(menuItems.price)}</p>
   </div>
 </div>
 </form>
 `;
 };
 
-const createPlaceOrder = function(items) {
-  let sum = 0;
-  for (item of items) {
-    sum += item.price * item.quantity;
-  }
-  let gst = gstCalculator(sum);
-  let totalGst = gst + sum;
-  return (`<div class="total-div">
+const createPlaceOrder = function() {
+  return (`
+  <div class="total-div"  class="bg-white">
     <p class="subtotal"> Food & Beverage Subtotal </p>
-    <p class="total"> Total: $${(convertCentsToDollars(sum)).toFixed(2)} </p>
-    <p class="tax"> GST: $${(convertCentsToDollars(gst)).toFixed(2)} </p>
-    <p class="total-amt"> Total Including GST: $${(convertCentsToDollars(totalGst)).toFixed(2)} </p>
-    <button type="button" class="place-order"> PLACE ORDER </button>
-    <button type="button" class='clear-cart'> CLEAR CART </button>
-    <p class="hidden thank-you">Thank you for your order! You will be contacted shortly to confirm details.</p>
+    <p class="tax"> GST </p>
+    <p class="total"> Total </p>
+    <p class="total-amt"> Total </p>
+    <p class="place-order"> PLACE ORDER </p>
+    <p class="place-order"> EMPTY CART </p>
   </div>`);
 };
 
-
-//GST CALCULATOR FOR CART
-const gstCalculator = function(total) {
-  const gst = total * 0.05;
-  return gst;
-};
-// //I think it takes in two parameters, gst and total, total being the total of the cart
-// const totalGstCalculator = function(gst) {
-//   const totalGst = gst + total;
-//   return totalGst;
-// }
-
-//RENDERS BOTH GST TOTAL SECTION AND MENU ITEMS
 const renderCart = function(items) {
+  // console.log('items', items);
   // loadCart();
   for (const item of items) {
-    //Holds HTML element for the menu items in the cart
-    const itemCartHTML = createAddToCart(item);
-    $('.order-cart').prepend(itemCartHTML);
+    // console.log('item', item);
+    const cartHTML = createAddToCart(item);
+    $('.order-cart').prepend(cartHTML);
   }
-  //Renders the createPlaceOrder for the menu
-  if ($('.total-div').length === 0) {
-    //Holds HTML element for the totals
-    const totalCartHTML = createPlaceOrder(items);
-    $('.total-cart').append(totalCartHTML);
-  } else {
-    const totalCartHTML = createPlaceOrder(items);
-    $('.total-div').replaceWith(totalCartHTML);
-
+  if ($('.order-cart .total-div').length === 0) {
+    $('.order-cart').append(createPlaceOrder());
   }
 };
 
-const showCart = function() {
+const showCart = function(cartItems) {
   $
     .get('/api/showCart')
     .then((resp) => {
-      // console.log("response: ", resp);
-      $('.order-cart').empty();
+      console.log("response: ", resp);
       renderCart(resp.orderCart);
     });
 };
@@ -124,23 +97,12 @@ const showCart = function() {
 const addCart = function(menuItem) {
   $
     .post('/api/addToCart', menuItem)
-    .then(showCart);
+    .then((resp) => {
+      console.log('RESPONSE:', resp);
+      console.log("this is menu item: ", menuItem);
+      renderCart(resp.orderCart);
+    });
 };
-
-//Clearing the cart
-const clearCart = function() {
-  $
-    .post('/api/clearCart')
-    .then(showCart);
-};
-
-// const loadCart = function() {
-//     $
-//         .post('/api/showCartPost')
-//         .then((resp) => resp.orderCart);
-// };
-
-// --------- adding a user to header
 
 const createUser = function(user) {
   return `
@@ -155,6 +117,16 @@ const renderUser = function(user) {
   $('#users-cart').append(userHTML);
 };
 
+// const addUser = function() {
+//     $
+//         .post('/api/users')
+//         .then((resp) => {
+//             // console.log("response: ", resp);
+//             renderUser(resp.users[0]);
+//         });
+
+// };
+
 const addUser = function() {
   $
     .post('/api/users')
@@ -164,7 +136,6 @@ const addUser = function() {
     });
 
 };
-
 
 const sendSMS = function() {
   $
@@ -177,14 +148,9 @@ $(document).ready(function() {
   //On click of nav button, pulls up menu skeleton
   $("#nav-button").on('click', function(event) {
     event.preventDefault();
-<<<<<<< HEAD
     $('.hero-image').slideUp(500);
-    if (menuEntries.length === 0) {
-      loadMenu();
-    }
-=======
     loadMenu();
->>>>>>> parent of 0467079... one more button to add then twilio is good
+
   });
   //On click listener for add to cart,
   $("#menu-items-container").on('click', ".order-button", function(event) {
@@ -194,19 +160,11 @@ $(document).ready(function() {
     const itemsToCart = $(textFieldID).val();
     const menuItem = { menuItemId: event.target.dataset.id, quantity: itemsToCart };
     addCart(menuItem);
-  });
-
-  $('.order-cart').on('click', '.place-order', function(event) {
-    event.preventDefault();
-    sendSMS();
-    $('.place-order').slideUp(500);
-    $('.clear-cart').slideUp(500);
-    $('.thank-you').slideDown(500);
-  });
-
-  $("#total-cart").on('click', '.clear-cart', function(event) {
-    event.preventDefault();
-    console.log("Hey this is the clear cart button");
-    clearCart();
+    $('.order-cart').empty();
+    showCart();
+    $('.order-cart').on('click', '.place-order', function(event) {
+      event.preventDefault();
+      sendSMS();
+    });
   });
 });
