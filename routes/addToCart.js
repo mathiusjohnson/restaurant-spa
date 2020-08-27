@@ -41,9 +41,5 @@ module.exports = (db) => {
         }
       });
   });
-<<<<<<< HEAD
   return router;
-=======
-  return router; ``;
->>>>>>> parent of ac10359... need to fix orders view, and back to orders button
 };
