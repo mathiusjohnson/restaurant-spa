@@ -1,17 +1,17 @@
 .empty-space-three {
-  width: 20%;
-  display: block;
+    width: 20%;
+    display: block;
 }
 
 .flex-column {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .order-cart {
-  margin-right: 40px;
-
+    margin-right: 40px;
 }
+
 .order-summary {
     margin-right: 10px;
     border: 1px solid white;
@@ -32,8 +32,9 @@ ul li {
 }
 
 .bg-white {
-  background-color: white;
+    background-color: white;
 }
+
 .place-order {
     background: rgb(18, 95, 202);
     color: white;
@@ -65,5 +66,5 @@ ul li {
 }
 
 .hidden {
-  display: none;
+    display: none;
 }
