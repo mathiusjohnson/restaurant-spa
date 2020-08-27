@@ -37,3 +37,24 @@
     text-align: center;
     color: #F96E46;
 }
+
+@media only screen and (max-width: 1024px) {
+  .grandpa {
+    display: flex;
+    justify-content: space-between;
+    font-size: xx-small;
+  }  .grandpa #menu-items-container input[type="number"]{
+    display: block;
+    background-color: white;
+  }  nav header h1 {
+    transition: linear;
+    font-size: larger;
+    /* background-color: violet; */
+  }  nav #nav-button {
+    font-size: smaller;
+  }  .icons {
+    /* display: flex;
+    justify-content: space-around; */
+    font-size: xx-small;
+  }
+}
