@@ -43,6 +43,7 @@ const createOrders = require("./routes/createOrders");
 const createCustomer = require('./routes/createCustomer');
 const orderReady = require('./routes/orderReady');
 // const placeOrder = require('./routes/placeOrder');
+const clearCart = require("./routes/clearCart");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -55,6 +56,7 @@ app.use("/api/orderReady", orderReady(db));
 app.use("/api/createOrders", createOrders(db));
 app.use("/api/createCustomer", createCustomer(db));
 
+app.use("/api/clearCart", clearCart(db));
 
 // Note: mount other resources here, using the same pattern above
 

@@ -149,7 +149,9 @@ $(document).ready(function() {
   //On click of nav button, pulls up menu skeleton
   $("#nav-button").on('click', function(event) {
     event.preventDefault();
+    $('.hero-image').slideUp(500);
     loadMenu();
+
   });
   //On click listener for add to cart,
   $("#menu-items-container").on('click', ".order-button", function(event) {

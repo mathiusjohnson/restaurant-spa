@@ -12,6 +12,11 @@
 
   <script src="https://kit.fontawesome.com/fb7b9df17a.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/client.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+
+  <script src="https://kit.fontawesome.com/fb7b9df17a.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/owner.js"></script>
   <script type="text/javascript" src="/scripts/client.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -23,7 +28,6 @@
   <nav>
     <header class="bg-color flex">
       <h1>Punjab Tadka</h1>
-      <button id="customer-login">Login as Customer</button>
       <button id=admin-login>Login as Admin</button>
       <button id="nav-button">See Menu</button>
     </header>
@@ -31,51 +35,44 @@
   </nav>
 
   <!-- Hero Image -->
-  <!-- <div class="hero-image">
+  <div class="hero-image">
     <div class="hero-text">
-      <button type="button" class="see-menu"> See our menu!</button>
+      <button type="button" class="see-menu" onclick=> See our menu!</button>
+
     </div>
-  </div> -->
+  </div>
 
   <!-- Three column layout -->
   <div id="container">
 
-    <!-- Side Navigation for Menu categories -->
-    <div id="sidenav" class="sticky">
-      <a class="button" href="#"> Salads</a>
-      <a class="button" href="#"> Mains </a>
-      <a class="button" href="#"> Sides </a>
-      <a class="button" href="#"> Kid's Menu</a>
-      <a class="button" href="#"> Desserts </a>
-      <a class="button" href="#"> Drinks </a>
-    </div>
-
-    <!-- Empty Space -->
-    <div class="empty-space-two"></div>
-
     <!-- Menu items container -->
     <main>
       <section id="menu-items-container">
-
-      </section>
-      <section id="customer-container">
-
-      </section>
-      <section id="order-customers-container" class="sticky">
       </section>
     </main>
 
-    <!-- Empty Space -->
-    <!-- <div class="empty-space-three"></div> -->
-
     <!-- Order Cart -->
     <div class="container-three">
-      <div id="users-cart"></div>
+      <div id="users-cart">
+      </div>
 
+      <!-- section for the menu options in the cart -->
       <section class='order-cart'>
+      </section>
+      <!-- section for the total of the cart -->
+      <section class='total-cart' id='total-cart'>
       </section>
     </div>
   </div>
+  <div class="admin-container">
+    <section id="customers-order">
+    </section>
+    <section id="customer-container">
+    </section>
+  </div>
+  <section id="orders-container">
+
+  </section>
   <footer class="bg-color footer">
     <ul class="social">
       <small>Copyright &copy; 2020. All Rights Reserved.</small>
