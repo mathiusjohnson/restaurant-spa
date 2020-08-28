@@ -1,56 +1,8 @@
-$(document).ready(function() {
-  // loadMenu();
-  $('#header-reset').click(function(event) {
-    event.preventDefault();
-    $('#admin-login').slideDown(500);
-    $('#nav-button').slideDown(500);
-    $('.hero-image').slideDown(500);
-    $('#sidenav').slideUp(500);
-    // $('#menu-items-container').empty();
-    $('#orders-container').empty();
-    $('#customer-container').empty();
-    $('#customer-container').slideUp(500);
+// ---------- Create menu items
 
-  });
-  //On click of nav button, pulls up menu skeleton
-  $("#nav-button").on('click', function(event) {
-    event.preventDefault();
-    $('.hero-image').slideUp(500);
-    $('#orders-container').empty();
-    $('#customer-container').empty();
-    $('#customer-container').slideUp(500);
-    if (menuEntries.length === 0) {
-      loadMenu();
-    }
-    $('#menu-items-container').slideDown(500);
-  });
 
-  //On click listener for add to cart,
-  $("#menu-items-container").on('click', ".add-button", function(event) {
-    event.preventDefault();
-    const textFieldID = `#numOfItems${event.target.dataset.id}`;
-    const itemsToCart = $(textFieldID).val();
-    const menuItem = { menuItemId: event.target.dataset.id, quantity: itemsToCart };
-    addCart(menuItem);
-    $('.order-cart').empty();
-    showCart();
-  });
-
-  $('.order-cart').on('click', '.place-order', function(event) {
-    console.log("place order clicked!");
-    event.preventDefault();
-    console.log("place order clicked!!!");
-    sendSMS();
-  });
-
-  $("#total-cart").on('click', '.clear-cart', function(event) {
-    event.preventDefault();
-    clearCart();
-  });
-  let menuEntries = [];
-  // ---------- Create menu items
-  const createMenuItems = function(menuItems) {
-    return `
+const createMenuItems = function(menuItems) {
+  return `
 <form method='/menu' action="POST">
   <article class="menu-items">
     <header class="name-of-item">
@@ -63,135 +15,156 @@ $(document).ready(function() {
       <span class="price">$${convertCentsToDollars(menuItems.price)}</span>
       <ul class="icons">
         <li><input id="numOfItems${menuItems.id}" type="number" required minlength="1" maxlength="1" placeholder="0"></li>
-        <li><button data-id=${menuItems.id} class="add-button">Add</button>
+        <li><button data-id=${menuItems.id} class="order-button">Add</button>
         </li>
       </ul>
     </footer>
   </article>
 </form>
 `;
-  };
+};
 
-  const convertCentsToDollars = function(cents) {
-    const dollars = cents / 100;
-    return Math.round(dollars * 100) / 100;
-  };
-  const renderMenu = function(items) {
-    for (const item of items) {
-      const menuHTML = createMenuItems(item);
-      $('#menu-items-container').append(menuHTML);
-    }
-  };
+const convertCentsToDollars = function(cents) {
+  const dollars = cents / 100;
+  return dollars;
+};
 
-  const loadMenu = function() {
-    $
-      .get('/api/menu/')
-      .then((resp) => {
-        menuEntries = resp.entries;
-        renderMenu(resp.entries);
-      });
-  };
+const renderMenu = function(items) {
+  for (const item of items) {
+    const menuHTML = createMenuItems(item);
+    $('#menu-items-container').append(menuHTML);
+  }
+};
 
-  // -----------  ADDING TO THE CART
-  const createAddToCart = function(menuItems) {
-    return `
-  <form action='/showCartPost' method="POST">
+const loadMenu = function() {
+  $
+    .get('/api/menu/')
+    .then((resp) => {
+      renderMenu(resp.entries);
+    });
+};
+
+
+// -----------  ADDING TO THE CART
+const createAddToCart = function(menuItems) {
+  return `
+  <form action='/showCartPost' method="POST" class="bg-white">
   <div class="flex-column">
   <div class="item1">
     <p>Quantity:${menuItems.quantity}</p>
     <p>${menuItems.name}</p>
-    <p>$${(convertCentsToDollars(menuItems.price) * menuItems.quantity).toFixed(2)}</p>
+    <p>$${convertCentsToDollars(menuItems.price)}</p>
   </div>
 </div>
 </form>
 `;
-  };
+};
 
-  const createPlaceOrder = function(items) {
-    let sum = 0;
-    for (item of items) {
-      sum += item.price * item.quantity;
-    }
-    let gst = gstCalculator(sum);
-    let totalGst = gst + sum;
-    return (`<div class="total-div">
+const createPlaceOrder = function() {
+  return (`
+  <div class="total-div"  class="bg-white">
     <p class="subtotal"> Food & Beverage Subtotal </p>
-    <p class="total"> Total: $${(convertCentsToDollars(sum)).toFixed(2)} </p>
-    <p class="tax"> GST: $${(convertCentsToDollars(gst)).toFixed(2)} </p>
-    <p class="total-amt"> Total Including GST: $${(convertCentsToDollars(totalGst)).toFixed(2)} </p>
+    <p class="tax"> GST </p>
+    <p class="total"> Total </p>
+    <p class="total-amt"> Total </p>
     <button class="place-order"> PLACE ORDER </button>
-    <button class='clear-cart'> CLEAR CART </button>
+    <button class="place-order"> EMPTY CART </button>
   </div>`);
-  };
+};
 
+const renderCart = function(items) {
+  // console.log('items', items);
+  // loadCart();
+  for (const item of items) {
+    // console.log('item', item);
+    const cartHTML = createAddToCart(item);
+    $('.order-cart').prepend(cartHTML);
+  }
+  if ($('.order-cart .total-div').length === 0) {
+    $('.order-cart').append(createPlaceOrder());
+  }
+};
 
-  //GST CALCULATOR FOR CART
-  const gstCalculator = function(total) {
-    const gst = total * 0.05;
-    return gst;
-  };
+const showCart = function(cartItems) {
+  $
+    .get('/api/showCart')
+    .then((resp) => {
+      console.log("response: ", resp);
+      renderCart(resp.orderCart);
+    });
+};
 
-  //RENDERS BOTH GST TOTAL SECTION AND MENU ITEMS
-  const renderCart = function(items) {
-    for (const item of items) {
-    //Holds HTML element for the menu items in the cart
-      const itemCartHTML = createAddToCart(item);
-      $('.order-cart').prepend(itemCartHTML);
-    }
-    //Renders the createPlaceOrder for the menu
-    if ($('.total-div').length === 0) {
-    //Holds HTML element for the totals
-      const totalCartHTML = createPlaceOrder(items);
-      $('.total-cart').append(totalCartHTML);
-    } else {
-      const totalCartHTML = createPlaceOrder(items);
-      $('.total-div').replaceWith(totalCartHTML);
+const addCart = function(menuItem) {
+  $
+    .post('/api/addToCart', menuItem)
+    .then((resp) => {
+      console.log('RESPONSE:', resp);
+      console.log("this is menu item: ", menuItem);
+      renderCart(resp.orderCart);
+    });
+};
 
-    }
-  };
+const createUser = function(user) {
+  return `
+<form action='/users' method='POST'>
+<h3>${user.name}'s Order</h3>
+</form>
+`;
+};
 
-  const showCart = function() {
-    $
-      .get('/api/showCart')
-      .then((resp) => {
+const renderUser = function(user) {
+  const userHTML = createUser(user);
+  $('#users-cart').append(userHTML);
+};
+
+// const addUser = function() {
+//     $
+//         .post('/api/users')
+//         .then((resp) => {
+//             // console.log("response: ", resp);
+//             renderUser(resp.users[0]);
+//         });
+
+// };
+
+const addUser = function() {
+  $
+    .post('/api/users')
+    .then((resp) => {
       // console.log("response: ", resp);
-        $('.order-cart').empty();
-        renderCart(resp.orderCart);
-      });
-  };
+      renderUser(resp.users[0]);
+    });
 
-  const addCart = function(menuItem) {
-    $
-      .post('/api/addToCart', menuItem)
-      .then(showCart);
-  };
+};
 
-  //Clearing the cart
-  const clearCart = function() {
-    $
-      .post('/api/clearCart')
-      .then(showCart);
-  };
+const sendSMS = function() {
+  $
+    .post('/api/sms/send')
+    .then((resp) => resp.sendSMS);
+};
 
-  // --------- adding a user to header
+$(document).ready(function() {
+  // loadMenu();
+  //On click of nav button, pulls up menu skeleton
+  $("#nav-button").on('click', function(event) {
+    event.preventDefault();
+    $('.hero-image').slideUp(500);
+    loadMenu();
 
-  // const createUser = function(user) {
-  //   return `
-  // <form action='/users' method='POST'>
-  // <h3>${user.name}'s Order</h3>
-  // </form>
-  // `;
-  // };
-
-  // const renderUser = function(user) {
-  //   const userHTML = createUser(user);
-  //   $('#users-cart').append(userHTML);
-  // };
-
-  const sendSMS = function() {
-    $
-      .post('/api/sms/send')
-      .then((resp) => resp.sendSMS);
-  };
-
+  });
+  //On click listener for add to cart,
+  $("#menu-items-container").on('click', ".order-button", function(event) {
+    event.preventDefault();
+    addUser();
+    const textFieldID = `#numOfItems${event.target.dataset.id}`;
+    const itemsToCart = $(textFieldID).val();
+    const menuItem = { menuItemId: event.target.dataset.id, quantity: itemsToCart };
+    addCart(menuItem);
+    $('.order-cart').empty();
+    showCart();
+    $('.order-cart').on('click', '.place-order', function(event) {
+      event.preventDefault();
+      sendSMS();
+    });
+  });
 });
