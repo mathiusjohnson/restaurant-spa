@@ -32,7 +32,7 @@ module.exports = (db) => {
           .create({
             body: `${customer}, your order of ${itemAndQuantity} is ready!.`,
             from: '+14132254219',
-            to: '+12368388913'
+            to: '+16043186664'
           })
           .then(message => console.log(message.sid));
       });
