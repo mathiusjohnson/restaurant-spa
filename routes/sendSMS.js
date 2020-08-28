@@ -2,8 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 // const sendSms = require('./twilio');
 const router = express.Router();
+<<<<<<< HEAD
 const accountSid = 'ACb293030513abf9a16262c01ff0ef494e';
 const authToken = '1ffdf3e513292591d994d72cc207f699';
+=======
+const accountSid = '';
+const authToken = '';
+>>>>>>> 1890eee985c3d8f10abb79998f959c1f54c63f9a
 const client = require('twilio')(accountSid, authToken);
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
@@ -28,13 +33,16 @@ module.exports = (db) => {
         const phone = order.phone_number;
         let itemAndQuantity = [];
         for (const rows of data.rows) {
+          console.log("each object of data: ", rows);
           itemAndQuantity.push(` ${rows.quantity} ${rows.menu_item}`);
         }
+
+        console.log(order);
         client.messages
           .create({
             body: `A new order has been placed! ${customer} ordered: ${itemAndQuantity}. Contact details: ${phone}.`,
             from: '+14132254219',
-            to: '+12368388913'
+            to: '+16043186664'
           })
           .then(message => console.log(message.sid));
       });
