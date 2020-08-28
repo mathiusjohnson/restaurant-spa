@@ -3,27 +3,31 @@ let menuEntries = [];
 
 const createMenuItems = function(menuItems) {
   return `
-<form method='/menu' action="POST">
-  <article class="menu-items">
-    <header class="name-of-item">
-      <span class="name">${menuItems.name}</span>
-    </header>
-    <main class="max-width">
-      <p class="tweeted-text break-long-words hover-blur">${menuItems.description}</p>
-    </main>
-    <footer class="menu-item-footer">
-      <span class="price">$${convertCentsToDollars(menuItems.price)}</span>
-      <ul class="icons">
-        <li><input id="numOfItems${menuItems.id}" type="number" required minlength="1" maxlength="1" placeholder="0"></li>
-        <li><button data-id=${menuItems.id} class="order-button">Add</button>
-        </li>
-      </ul>
-    </footer>
-  </article>
-</form>
+  <li class="menu-item-container">
+    <form method='/menu' action="POST">
+      <article class="menu-items">
+      <img src="images/${menuItems.name}.jpg" class="menu-item-image" width="250" alt="${menuItems.name}">
+      <section class="menu-details">
+        <header class="name-of-item">
+          <span class="name">${menuItems.name}</span>
+        </header>
+        <div class="max-width menu-item-details">
+          <p class="tweeted-text break-long-words hover-blur">${menuItems.description}</p>
+        </main>
+        <footer class="menu-item-footer">
+          <span class="price">$${convertCentsToDollars(menuItems.price)}</span>
+          <ul class="icons">
+            <li><input id="numOfItems${menuItems.id}" type="number" required minlength="1" maxlength="1" placeholder="0"></li>
+            <li><button data-id=${menuItems.id} class="order-button">Add</button>
+            </li>
+          </ul>
+        </footer>
+        </section>
+      </article>
+    </form>
+  </li>
 `;
 };
-
 
 
 const convertCentsToDollars = function(cents) {
@@ -179,5 +183,14 @@ $(document).ready(function() {
     //   event.preventDefault();
     //   sendSMS();
     // });
+  });
+  $("#menu-items-container").on('click', ".order-button", function(event) {
+    event.preventDefault();
+    addUser();
+    const textFieldID = `#numOfItems${event.target.dataset.id}`;
+    const itemsToCart = $(textFieldID).val();
+    const menuItem = { menuItemId: event.target.dataset.id, quantity: itemsToCart };
+    addCart(menuItem);
+
   });
 });

@@ -1,21 +1,17 @@
 #container {
   display: flex;
 }
-
 #menu-items-container {
     width: 60vw;
 }
-
 .empty-space-two {
     width: 70%;
     display: block;
 }
-
 article section {
     margin: 0 auto;
     // width: 1em;
 }
-
 .menu-items {
     display: flex;
     background-color: white;
@@ -26,48 +22,39 @@ article section {
     font-size: 10px;
     margin-left: 50px;
 }
-
 .menu-items:hover {
     box-shadow: 20px 20px 30px -10px #192824;
 }
-
 header .name {
     font-size: 2.5em;
 }
-
 main p {
     font-size: 1.5em;
 }
-
 footer ul li {
     list-style-type: none;
 }
-
 .icons {
     font-size: 14px;
     display: flex;
     justify-content: flex-end;
 }
-
 .menu-item-footer {
     display: flex;
     justify-content: flex-end;
     font-size: 2em;
 }
-
 .fa-minus,
 .fa-plus {
     font-size: 1.5em;
     padding-top: .5em;
     color: $primary;
 }
-
 .menu-item-footer input {
     font-size: 2em;
     width: 2em;
     height: 1.2em;
 }
-
 .menu-item-footer button {
     background-color: $primary;
     font-size: 2em;
@@ -75,27 +62,22 @@ footer ul li {
     border: none;
     border-radius: 5px;
 }
-
 .menu-item-details {
     flex: 4;
 }
-
 .menu-details {
     margin: 0;
     flex: 1;
 }
-
-.add-button:hover {
+.order-button:hover {
     color: #FFFFFF;
     background-color: #a2310f;
 }
-
 img {
     max-width: 100%;
     padding: 2em;
     align-self: center;
 }
-
 .numOfItems {
     font-size: 20px;
 }
