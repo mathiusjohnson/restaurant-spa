@@ -18,12 +18,14 @@ $(document).ready(function() {
     $('#orders-container').slideUp(500);
     $('#orders-container').empty(500);
     loadCustomers();
+    loadBackButton();
     loadOrderItems();
   });
 
   $("#orders-container").on('click', '#back-to-orders', function(event) {
     event.preventDefault();
     $(this).slideUp(500);
+    $('#orders-container').slideDown(500);
     loadOrders();
 
   });
@@ -70,11 +72,29 @@ $(document).ready(function() {
     </form>`;
   };
 
+  const createBackButton = function() {
+    return `<form method='/createCustomer' action="POST">
+    <article class="order-items">
+      <button id="order-ready">Order Ready</button>
+    </form>`;
+  };
+
+  const renderBackButton = function() {
+    const  backHTML = createBackButton();
+    $('customer-container').append(backHTML);
+  };
+
+  const loadBackButton = function() {
+    $
+      .get('/api/createcustomer/')
+      .then(resp => {
+        renderBackButton(resp);
+      });
+  };
   const renderCustomers = function(customers) {
     // for (const customer of customers) {
     const customerHTML = createCustomers(customers);
     $('#customer-container').append(customerHTML);
-
   };
   const loadCustomers = function() {
     $
