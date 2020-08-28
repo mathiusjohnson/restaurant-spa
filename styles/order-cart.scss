@@ -8,19 +8,86 @@
     flex-direction: column;
 }
 
-.order-cart {
-    margin-right: 40px;
+.order-cart-name {
+  padding-top: 1em;
+  padding-left: 0.7em;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bolder;
 }
 
-.order-summary {
-    margin-right: 10px;
-    border: 1px solid white;
-    background: white;
-    border-radius: 5px;
-    min-height: 20vh;
-    top: 30;
-    right: 0;
+/* cart holding the menu items */
+.order-cart {
+  display: flex;
+  flex-direction: column;
+  width: 9em;
+  // background-color: #E4572E;
+  border: 3px solid black;
+  border-bottom: transparent;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  // border: 2px solid darkgrey;
+  // border-radius: 20px;
+  margin: 5%;
+  // padding: 1.5em;
 }
+
+/* the item being added into the cart */
+.order-cart .item1 {
+  display: table-column;
+  padding-top: 1em;
+  text-align: center;
+}
+
+/* subtotal cart underneath order-cart*/
+.total-div {
+  display: flex;
+  flex-direction: column;
+  margin-top: -1em;
+  margin-left: 0.47em;
+  width: 9em;
+  // background-color: #E4572E;
+  border: 3px solid black;
+  border-top: transparent;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+
+  // border-radius: 20px;
+  // margin: -2em;
+}
+
+/* food & beverage subtotal */
+.subtotal {
+  text-align: center;
+  font-weight: 800;
+}
+
+/* total price */
+.total {
+  text-align: center;
+  font-weight: 800;
+}
+
+/* gst */
+.tax {
+  text-align: center;
+  font-weight: bolder;
+}
+
+/* total amount */
+.total-amt {
+  text-align: center;
+  font-weight: bolder;
+}
+
+// .order-summary {
+//     margin-right: 10px;
+//     border: 1px solid white;
+//     background: white;
+//     border-radius: 5px;
+//     min-height: 20vh;
+//     top: 30;
+//     right: 0;
+// }
 
 ul li {
     list-style-type: none;
@@ -35,30 +102,31 @@ ul li {
     background-color: white;
 }
 
+/* place order button */
 .place-order {
     background: rgb(18, 95, 202);
     color: white;
-    width: inherit;
+    width: 5em;
     text-align: center;
     border-radius: 5px;
+    margin-left: 2em;
 }
 
-.subtotal {
-    font-weight: 800;
+/* clear cart button*/
+.clear-cart {
+  background: red;
+  color: white;
+  width: 5em;
+  font-size: 20px;
+  margin-left: 2.8em;
+  margin-top: 10px;
+  margin-bottom: 40px;
 }
 
 .tax {
     // margin-bottom: 20px;
 }
 
-.total {
-    font-weight: 800;
-    // margin-bottom: 20px;
-}
-
-.total-div {
-    margin: 0;
-}
 
 .your-order-summary {
     display: flex;
@@ -68,3 +136,9 @@ ul li {
 .hidden {
     display: none;
 }
+
+// .grandpa .container-three {
+//   margin-right: 3em;
+//   border: yellowgreen;
+//   // background-color: red;
+// }

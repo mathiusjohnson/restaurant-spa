@@ -56,9 +56,9 @@ const createAddToCart = function(menuItems) {
   <form action='/showCartPost' method="POST">
   <div class="flex-column">
   <div class="item1">
-    <p>Quantity:${menuItems.quantity}</p>
-    <p>${menuItems.name}</p>
-    <p>$${(convertCentsToDollars(menuItems.price) * menuItems.quantity).toFixed(2)}</p>
+  <p><b>${menuItems.name}</b></p>
+  <p>Quantity: ${menuItems.quantity}</p>
+  <p>$${(convertCentsToDollars(menuItems.price) * menuItems.quantity).toFixed(2)}</p>
   </div>
 </div>
 </form>
