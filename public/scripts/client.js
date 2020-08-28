@@ -189,9 +189,8 @@ $(document).ready(function() {
   // };
 
   const sendSMS = function() {
-    console.log("sendSMS");
     $
-      .post('/api/sms/')
+      .post('/api/sms/send')
       .then((resp) => resp.sendSMS);
   };
 

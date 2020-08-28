@@ -30,55 +30,56 @@ $(document).ready(function() {
     $('#customer-container').empty();
     loadOrders();
 
-  });  $('#customer-container').on('click', '#order-ready', function(event) {
+  });
+  $('#customer-container').on('click', '#order-ready', function(event) {
     event.preventDefault();
     orderReadySMS();
   });
-});
 
-const createOrders = function(orders) {
-  return `<form method='/createCustomer' action="POST>
+  const createOrders = function(orders) {
+    return `<form method='/createCustomer' action="POST>
     <article class="order-items">
       <p class="name">Name: ${orders.name}, Order ID:  ${orders.id}</p>
       <p>Time Created: ${orders.order_date}</p>
     </article>
     <button id="select-order">Select to Update</button>
   </form>`;
-};
+  };
 
-const renderOrders = function(Orders) {
-  const orderHTML = createOrders(Orders);
-  $('#orders-container').append(orderHTML);
-};
+  const renderOrders = function(Orders) {
+    const orderHTML = createOrders(Orders);
+    $('#orders-container').append(orderHTML);
+  };
 
-const loadOrders = function() {
-  $
-    .get('/api/createcustomer/')
-    .then((resp) => {
-      renderOrders(resp.customer[0]);
-    })
-    .catch(err => {
-      console.log("err: ", err);
-    });
-};
+  const loadOrders = function() {
+    console.log("loadOrders");
+    $
+      .get('/api/createcustomer/')
+      .then((resp) => {
+        renderOrders(resp.customer[0]);
+      })
+      .catch(err => {
+        console.log("err: ", err);
+      });
+  };
 
-const createCustomers = function(customer) {
-  return `<form method='/createCustomer' action="POST">
-  <article class="order-items">
+  const createCustomers = function(customer) {
+    return `<form method='/createCustomer' action="POST">
+    <article class="order-items">
       <p class="name">Name: ${customer.name}, Order ID:  ${customer.id}</p>
       <p>Phone Number: ${customer.phone_number}</p>
-  </article>
-  <button id="back-to-orders">Back to Orders</button>
-  <button id="order-ready">Order Ready</button>
-</form>`;
-};
+      </article>
+      <button id="back-to-orders">Back to Orders</button>
+      <button id="order-ready">Order Ready</button>
+    </form>`;
+  };
 
-const renderCustomers = function(customers) {
-  for (const customer of customers) {
-    const customerHTML = createCustomers(customer);
+  const renderCustomers = function(customers) {
+    // for (const customer of customers) {
+    const customerHTML = createCustomers(customers);
     $('#customer-container').append(customerHTML);
-  }
 
+  };
   const loadCustomers = function() {
     $
       .get('/api/createcustomer/')
@@ -88,17 +89,19 @@ const renderCustomers = function(customers) {
   };
 
   const createOrderItems = function(orders) {
+    console.log("createOrderItems: ", orders);
     return `
-<form method='/orders' action="POST">
-  <article class="order-items">
-      <span class="name">${orders.name}: ${orders.quantity} orders</span>
-  </article>
-</form>
-`;
+      <form method='/orders' action="POST">
+        <article class="order-items">
+            <span class="name">${orders.name}: ${orders.quantity} orders</span>
+        </article>
+      </form>
+      `;
   };
 
   const renderOrderItems = function(orders) {
     for (const order of orders) {
+      console.log("this is the order: ", order);
       const orderHTML = createOrderItems(order);
       $('#customers-order').append(orderHTML);
     }
@@ -108,6 +111,7 @@ const renderCustomers = function(customers) {
     $
       .get('/api/createOrders/')
       .then((resp) => {
+        console.log("loadOrderItems then");
         renderOrderItems(resp.orders);
       });
   };
@@ -117,4 +121,4 @@ const renderCustomers = function(customers) {
       .post('/api/orderReady')
       .then((resp) => resp.orderReady);
   };
-};
+});
