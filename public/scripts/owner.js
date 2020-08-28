@@ -29,6 +29,7 @@ $(document).ready(function() {
     loadOrders();
 
   });
+
   $('#customer-container').on('click', '#order-ready', function(event) {
     event.preventDefault();
     orderReadySMS();

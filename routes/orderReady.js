@@ -2,18 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 // const sendSms = require('./twilio');
 const router = express.Router();
-<<<<<<< HEAD
 const accountSid = 'ACb293030513abf9a16262c01ff0ef494e';
 const authToken = '1ffdf3e513292591d994d72cc207f699';
-=======
-const accountSid = '';
-const authToken = '';
->>>>>>> 1890eee985c3d8f10abb79998f959c1f54c63f9a
 const client = require('twilio')(accountSid, authToken);
 router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json());
-
-module.exports = (db) => {
+router.use(bodyParser.json());module.exports = (db) => {
   router.post('/', (req, res) => {
     const id = 2;
     db.query(
@@ -24,18 +17,17 @@ module.exports = (db) => {
       WHERE customer_id = $1;`, [id])
       .then(data => {
         console.log(data.rows);
-        const order = data.rows[0];
+        const order = data.rows;
         const customer = order.name;
+        console.log(order);
         let itemAndQuantity = [];
         for (const rows of data.rows) {
           console.log("each object of data: ", rows);
           itemAndQuantity.push(` ${rows.quantity} ${rows.menu_item}`);
-        }
-
-        console.log(order);
+        }        console.log(order);
         client.messages
           .create({
-            body: `${customer}, your order of ${itemAndQuantity} is ready!.`,
+            body: `Your order of ${itemAndQuantity} is ready!.`,
             from: '+14132254219',
             to: '+16043186664'
           })
