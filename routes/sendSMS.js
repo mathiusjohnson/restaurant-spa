@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 // const sendSms = require('./twilio');
 const router = express.Router();
 const accountSid = 'ACb293030513abf9a16262c01ff0ef494e';
-const authToken = '4af8f2918eafa75e5966d253b9686083';
+const authToken = '1ffdf3e513292591d994d72cc207f699';
 const client = require('twilio')(accountSid, authToken);
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());

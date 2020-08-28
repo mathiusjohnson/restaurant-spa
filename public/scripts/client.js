@@ -209,12 +209,12 @@ $(document).ready(function() {
         const itemsToCart = $(textFieldID).val();
         const menuItem = { menuItemId: event.target.dataset.id, quantity: itemsToCart };
         addCart(menuItem);
-        $('.order-cart').empty();
-        showCart();
-        $('.order-cart').on('click', '.place-order', function(event) {
-            event.preventDefault();
-            sendSMS();
-        });
+        // $('.order-cart').empty();
+        // showCart();
+        // $('.order-cart').on('click', '.place-order', function(event) {
+        //     event.preventDefault();
+        //     sendSMS();
+        // });
         $("#total-cart").on('click', '.clear-cart', function(event) {
             event.preventDefault();
             clearCart();
