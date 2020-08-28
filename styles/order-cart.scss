@@ -27,13 +27,15 @@
     flex-direction: column;
     line-height: 10px;
     background-color: white;
-    box-shadow: 5px 0 6px #E4572E;
+    // box-shadow: 5px 0 6px #E4572E;
     width: 19em;
-    border: 3px solid grey;
+    // border: 3px solid grey;
     border-bottom: transparent;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    // border-top-left-radius: 20px;
+    // border-top-right-radius: 20px;
     margin: 5%;
+    padding-left: 2em;
+    padding-right: 2em;
 }
 
 
@@ -48,19 +50,23 @@
 
 /* subtotal cart underneath order-cart*/
 
-// .total-div {
-//     display: flex;
-//     flex-direction: column;
-//     background-color: white;
-//     box-shadow: 5px 10px 6px 0 #E4572E;
-//     margin-top: -1.9em;
-//     margin-left: 1em;
-//     width: 19em;
-//     border: 3px solid grey;
-//     border-top: transparent;
-//     border-bottom-right-radius: 20px;
-//     border-bottom-left-radius: 20px;
-// }
+.total-div {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    // box-shadow: 5px 10px 6px 0 #E4572E;
+    margin-top: -1.9em;
+    margin-left: 1em;
+    width: 19em;
+    // border: 3px solid grey;
+    border-top: transparent;
+    // border-bottom-right-radius: 20px;
+    // border-bottom-left-radius: 20px;
+    padding-left: 2em;
+    padding-right: 2em;
+    // box-shadow: 20px 20px 30px -10px #192824;
+}
+
 
 /* food & beverage subtotal */
 
