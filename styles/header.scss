@@ -1,27 +1,19 @@
+$headerHeight: 100px;
 .bg-color {
     width: 100%;
     background-color: $primary;
 }
 
-// #nav-button {
-//     color: white;
-//     // background-color: rgba(225, 126, 60, 0.961);
-//     // border-radius: 60px;
-//     // border: 2px solid white;
-//     padding-left: 30px;
-//     padding-right: 30px;
-//     // margin-top: 70px;
-// }
 nav header {
-    height: 150px;
+    height: $headerHeight;
     justify-content: space-between;
     position: fixed;
     z-index: 9999;
+    top: 0;
 }
 
-.empty-space {
-    height: 15vh;
-    display: block;
+nav~.grandpa {
+    margin-top: $headerHeight;
 }
 
 .flex {
@@ -44,13 +36,6 @@ nav header h1 {
     text-align: right;
 }
 
-// nav #nav-button {
-//     cursor: pointer;
-//     border: transparent;
-//     background-color: $primary;
-//     color: white;
-//     font-size: 1.5em;
-// }
 nav header button {
   background-color: $primary;
   font-size: 18px;
@@ -63,8 +48,10 @@ nav header button {
 
 .logo {
     width: 250px;
-    padding-top: 40px;
+    padding-top: 10px;
     padding-left: 10px;
+    transform: translateY(30px);
+    transform-origin: top;
     // box-sizing: unset;
 }
 
@@ -77,4 +64,8 @@ nav header button {
 
 .nav-button-container {
     padding-right: 20px;
+}
+
+#admin-login {
+    margin-right: 20px;
 }

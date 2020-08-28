@@ -1,6 +1,5 @@
 $primary: #E4572E;
-@import
-'header',
+@import 'header',
 'footer',
 'menu-items-container',
 'order-cart',
@@ -11,12 +10,12 @@ body {
     margin: 0;
     height: 100%;
     background-color: #EEE;
-    font-size: 24px;
+    font-size: 100%;
 }
 
-// .grandpa .container-three {
-//   margin-right: 3em;
-// }
+.container-three {
+    padding: 2.5em;
+}
 
 .sticky {
     position: fixed;
@@ -24,5 +23,9 @@ body {
 }
 
 button {
-  cursor: pointer;
+    cursor: pointer;
+}
+
+main {
+    display: flex;
 }
