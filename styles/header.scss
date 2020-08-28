@@ -19,11 +19,10 @@ nav header {
     z-index: 9999;
 }
 
-.empty-space {
-    height: 15vh;
-    display: block;
-}
-
+// .empty-space {
+//     height: 15vh;
+//     display: block;
+// }
 .flex {
     display: flex;
     align-items: center;
@@ -77,4 +76,8 @@ nav header button {
 
 .nav-button-container {
     padding-right: 20px;
+}
+
+#admin-login {
+    margin-right: 20px;
 }

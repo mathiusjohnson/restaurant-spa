@@ -10,11 +10,12 @@
 // }
 .hero-image {
     background-position: center center;
-    padding-top: 150px;
+    // margin-top: 50px;
+    padding-top: 250px;
     background-size: cover;
     display: table;
     background-repeat: inherit;
-    height: 75vh;
+    height: 95vh;
     width: 100%;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
 }
