@@ -3,15 +3,6 @@
     background-color: $primary;
 }
 
-// #nav-button {
-//     color: white;
-//     // background-color: rgba(225, 126, 60, 0.961);
-//     // border-radius: 60px;
-//     // border: 2px solid white;
-//     padding-left: 30px;
-//     padding-right: 30px;
-//     // margin-top: 70px;
-// }
 nav header {
     height: 150px;
     justify-content: space-between;
@@ -19,10 +10,6 @@ nav header {
     z-index: 9999;
 }
 
-// .empty-space {
-//     height: 15vh;
-//     display: block;
-// }
 .flex {
     display: flex;
     align-items: center;
@@ -43,13 +30,6 @@ nav header h1 {
     text-align: right;
 }
 
-// nav #nav-button {
-//     cursor: pointer;
-//     border: transparent;
-//     background-color: $primary;
-//     color: white;
-//     font-size: 1.5em;
-// }
 nav header button {
     background-color: $primary;
     font-size: 18px;
