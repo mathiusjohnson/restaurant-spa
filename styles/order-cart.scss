@@ -4,7 +4,7 @@
 }
 
 .container-three {
-  margin-left: 200px;
+    margin-left: 200px;
 }
 
 .flex-column {
@@ -13,79 +13,84 @@
 }
 
 .order-cart-name {
-  padding-top: 1em;
-  padding-left: 0.7em;
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: bolder;
+    padding-top: 1em;
+    padding-left: 0.7em;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
 }
+
 
 /* cart holding the menu items */
+
 .order-cart {
-  display: flex;
-  flex-direction: column;
-  line-height: 10px;
-  background-color: white;
-  box-shadow: 5px 0 6px #E4572E;
-  width: 19em;
-  // background-color: #E4572E;
-  border: 3px solid grey;
-  border-bottom: transparent;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  // border: 2px solid darkgrey;
-  // border-radius: 20px;
-  margin: 5%;
-  // padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    line-height: 10px;
+    background-color: white;
+    box-shadow: 5px 0 6px #E4572E;
+    width: 19em;
+    border: 3px solid grey;
+    border-bottom: transparent;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin: 5%;
 }
+
 
 /* the item being added into the cart */
+
 .order-cart .item1 {
-  display: table-column;
-  padding-top: 1em;
-  text-align: center;
+    display: table-column;
+    padding-top: 1em;
+    text-align: center;
 }
+
 
 /* subtotal cart underneath order-cart*/
-.total-div {
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  box-shadow: 5px 10px 6px 0 #E4572E;
-  margin-top: -1.9em;
-  margin-left: 1em;
-  width: 19em;
-  // background-color: #E4572E;
-  border: 3px solid grey;
-  border-top: transparent;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
 
-  // border-radius: 20px;
-  // margin: -2em;
-}
+// .total-div {
+//     display: flex;
+//     flex-direction: column;
+//     background-color: white;
+//     box-shadow: 5px 10px 6px 0 #E4572E;
+//     margin-top: -1.9em;
+//     margin-left: 1em;
+//     width: 19em;
+//     border: 3px solid grey;
+//     border-top: transparent;
+//     border-bottom-right-radius: 20px;
+//     border-bottom-left-radius: 20px;
+// }
 
 /* food & beverage subtotal */
+
 .subtotal {
-  text-align: center;
-  font-weight: 800;
+    text-align: center;
+    font-weight: 800;
 }
+
 
 /* total price */
+
 .total {
-  text-align: center;
-  font-weight: 800;
+    text-align: center;
+    font-weight: 800;
 }
+
 
 /* gst */
+
 .tax {
-  text-align: center;
-  font-weight: bolder;
+    text-align: center;
+    font-weight: bolder;
 }
 
+
 /* total amount */
+
 .total-amt {
-  text-align: center;
-  font-weight: bolder;
+    text-align: center;
+    font-weight: bolder;
 }
 
 // .order-summary {
@@ -97,7 +102,6 @@
 //     top: 30;
 //     right: 0;
 // }
-
 ul li {
     list-style-type: none;
 }
@@ -111,27 +115,31 @@ ul li {
     background-color: white;
 }
 
+
 /* place order button */
+
 .place-order {
-  background: #125fca;
-  color: white;
-  width: 10em;
-  text-align: center;
-  border-radius: 200px;
-  margin-left: 1em;
-  font-size: 25px;
+    background: #125fca;
+    color: white;
+    width: 10em;
+    text-align: center;
+    border-radius: 200px;
+    margin-left: 1em;
+    font-size: 25px;
 }
 
+
 /* clear cart button*/
+
 .clear-cart {
-  background: red;
-  color: white;
-  width: 10em;
-  font-size: 20px;
-  margin-left: 2.5em;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border-radius: 200px;
+    background: red;
+    color: white;
+    width: 10em;
+    font-size: 20px;
+    margin-left: 2.5em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 200px;
 }
 
 .your-order-summary {
