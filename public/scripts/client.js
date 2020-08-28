@@ -71,7 +71,8 @@ const createPlaceOrder = function() {
     <p class="total-amt"> Total </p>
     <button class="place-order"> PLACE ORDER </button>
     <button class="place-order"> EMPTY CART </button>
-  </div>`);
+  </div>
+`);
 };
 
 const renderCart = function(items) {
@@ -139,11 +140,11 @@ const addUser = function() {
 
 };
 
-const sendSMS = function() {
-  $
-    .post('/api/sms/send')
-    .then((resp) => resp.sendSMS);
-};
+// const sendSMS = function() {
+//   $
+//     .post('/api/sms/send')
+//     .then((resp) => resp.sendSMS);
+// };
 
 $(document).ready(function() {
   // loadMenu();
@@ -174,9 +175,9 @@ $(document).ready(function() {
     addCart(menuItem);
     $('.order-cart').empty();
     showCart();
-    $('.order-cart').on('click', '.place-order', function(event) {
-      event.preventDefault();
-      sendSMS();
-    });
+    // $('.order-cart').on('click', '.place-order', function(event) {
+    //   event.preventDefault();
+    //   sendSMS();
+    // });
   });
 });
