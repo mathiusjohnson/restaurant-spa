@@ -29,6 +29,7 @@
 }
 /* the item being added into the cart */
 .order-cart .item1 {
+  line-height: 1.5em;
   display: table-column;
   padding-top: 1em;
   text-align: center;
@@ -82,7 +83,6 @@ ul li {
   width: 10em;
   text-align: center;
   border-radius: 200px;
-  margin-left: 1em;
   font-size: 25px;
 }
 /* clear cart button*/
@@ -91,8 +91,8 @@ ul li {
   color: white;
   width: 10em;
   font-size: 20px;
-  margin-left: 2.5em;
-  margin-top: 20px;
+  margin-left: 1.5em;
+  margin-top: 5px;
   margin-bottom: 20px;
   border-radius: 200px;
 }
