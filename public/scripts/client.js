@@ -7,7 +7,7 @@ const createMenuItems = function(menuItems) {
     <li class="menu-item-container">
       <form method='/menu' action="POST">
         <article class="menu-items">
-        <img src="images/${menuItems.name}.jpg" class="menu-item-image" alt="${menuItems.name}">
+        <img src="images/${menuItems.name}.jpg" class="menu-item-image" width="250" alt="${menuItems.name}">
         <section class="menu-details">
           <header class="name-of-item">
             <span class="name">${menuItems.name}</span>
