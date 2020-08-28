@@ -4,27 +4,29 @@ let menuEntries = [];
 
 const createMenuItems = function(menuItems) {
     return `
-<form method='/menu' action="POST">
-  <article class="menu-items">
-  <img src="images/${menuItems.name}.jpg" alt="${menuItems.name}">
-  <section class = "menu-details">
-    <header class="name-of-item">
-      <span class="name">${menuItems.name}</span>
-    </header>
-    <main class="max-width">
-      <p class="tweeted-text break-long-words hover-blur">${menuItems.description}</p>
-    </main>
-    <footer class="menu-item-footer">
-      <span class="price">$${convertCentsToDollars(menuItems.price)}</span>
-      <ul class="icons">
-        <li><input id="numOfItems${menuItems.id}" type="number" required minlength="1" maxlength="1" placeholder="0"></li>
-        <li><button data-id=${menuItems.id} class="order-button">Add</button>
-        </li>
-      </ul>
-    </footer>
-    </section>
-  </article>
-</form>
+    <li class="menu-item-container">
+      <form method='/menu' action="POST">
+        <article class="menu-items">
+        <img src="images/${menuItems.name}.jpg" class="menu-item-image" alt="${menuItems.name}">
+        <section class="menu-details">
+          <header class="name-of-item">
+            <span class="name">${menuItems.name}</span>
+          </header>
+          <div class="max-width menu-item-details">
+            <p class="tweeted-text break-long-words hover-blur">${menuItems.description}</p>
+          </main>
+          <footer class="menu-item-footer">
+            <span class="price">$${convertCentsToDollars(menuItems.price)}</span>
+            <ul class="icons">
+              <li><input id="numOfItems${menuItems.id}" type="number" required minlength="1" maxlength="1" placeholder="0"></li>
+              <li><button data-id=${menuItems.id} class="order-button">Add</button>
+              </li>
+            </ul>
+          </footer>
+          </section>
+        </article>
+      </form>
+    </li>
 `;
 };
 
@@ -36,10 +38,13 @@ const convertCentsToDollars = function(cents) {
     // return dollars.toFixed(2);
 };
 const renderMenu = function(items) {
+    const $menuItemsContainer = $('#menu-items-container');
+    let menuItemHTML = `<ul class="menu-items-container">`;
     for (const item of items) {
-        const menuHTML = createMenuItems(item);
-        $('#menu-items-container').append(menuHTML);
+        menuItemHTML += createMenuItems(item);
     }
+    menuItemHTML += `</ul>`;
+    $menuItemsContainer.append(menuItemHTML);
 };
 
 const loadMenu = function() {
